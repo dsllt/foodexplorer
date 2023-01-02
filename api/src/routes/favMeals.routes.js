@@ -7,5 +7,6 @@ const favMealsRoutes = Router();
 const favMealsController = new FavMealsController();
 
 favMealsRoutes.post('/:userId', favMealsController.create);
+favMealsRoutes.get('/:userId', favMealsController.show);
 
 module.exports = favMealsRoutes;

@@ -33,10 +33,26 @@ class OrdersController {
       }
     });
 
-    console.log(ordered_meals)
     await knex('orderMeal').insert(ordered_meals);
 
     response.json();
+  }
+
+  // async index(request, response) {
+  //   const orders = await knex('orders').orderBy('created_at');
+
+  //   response.json({orders})
+  // }
+
+  async show(request, response) {
+    const id = request.params;
+
+    const meals = await knex('orderMeal')
+    .where('orderId', '=' ,id.id)
+    .innerJoin('meals', 'orderMeal.mealId', '=', 'meals.id')
+    .select('meals.name')
+
+    response.json(meals)
   }
 }
 

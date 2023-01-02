@@ -31,7 +31,6 @@ class IngredientsController {
       }
     })
 
-    console.log(ingredientsIds);
     response.json(ingredients);
   }
 

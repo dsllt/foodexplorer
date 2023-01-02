@@ -31,6 +31,13 @@ class FavMealsController {
 
     response.json();
   }
+
+  async show(request, response) {
+    const userId = request.params;
+    const favMeals = await knex('favMeals').where(userId);
+
+    response.json(favMeals)
+  }
 }
 
 module.exports = FavMealsController;
