@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   align-items: center;
-  border-radius: 16px;
   display: flex;
   flex-direction: row;
   gap: 306px;
@@ -29,6 +28,7 @@ export const Logo = styled.div`
 `
 export const Form = styled.form`
   background-color: ${({theme}) => theme.COLORS.BACKGROUND_700};
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,6 +47,8 @@ export const Form = styled.form`
 
   >Button{
     margin-top: 32px;
+    width: 100%;
+    justify-content: space-around;
   }
 
 `

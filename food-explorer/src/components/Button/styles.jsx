@@ -9,6 +9,7 @@ export const Container = styled.button`
   display: flex;
   gap: 8px;
   line-height: 24px;
+  justify-content: center;
   padding: 12px 33px;
 
   >text {

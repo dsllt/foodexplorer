@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.button`
+  align-items: center;
+  justify-content: center;
+  display: flex;
   background: none;
   border: none;
   color: ${({theme}) => theme.COLORS.WHITE};

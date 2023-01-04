@@ -11,10 +11,18 @@ export default {
     GREY_200: '#C4C4CC',
     GREY_100: '#E1E1E6',
 
+
+    TABLE_BORDER: '#192227',
     
     BLUE_LIGHT: '#82F3FF',
     RED_DARK: '#92000E',
     WHITE: '#FFFFFF',
+
+    RED: '#AB222E',
+    RED_LIGHT: '#AB4D55',
+    GREEN: '#04D361',
+    YELLOW: '#FBA94C'
+
   
   }
 }
