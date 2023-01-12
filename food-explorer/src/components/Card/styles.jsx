@@ -38,12 +38,13 @@ export const Main = styled.div`
     gap: 4px;
     justify-content: center;
 
-    >h3{
+    >a{
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 700;
       font-size: 24px;
       line-height: 140%;
+      color: ${({theme}) => theme.COLORS.WHITE};
     }
   }
 

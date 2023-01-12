@@ -52,4 +52,14 @@ export const Form = styled.form`
     justify-content: space-around;
   }
 
+  a{
+    color: ${({theme}) => theme.COLORS.WHITE};
+    margin-top: 32px;
+
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+  }
+
 `

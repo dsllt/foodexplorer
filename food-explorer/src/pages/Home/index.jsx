@@ -6,11 +6,34 @@ import { Section } from "../../components/Section"
 import { Card } from "../../components/Card"
 import { Hover } from "../../components/Hover"
 
+import SaladaRavanello from '../../assets/SaladaRavanello.png'
+const plateDescription = 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
+
 
 
 export function Home(){
   const slides = [
-    <Card/>,<Card/>,<Card/>,
+    <Card 
+      plateLink={'saladaRavanello'} 
+      plate={'Salada Ravanello'} 
+      imgSrc={SaladaRavanello} 
+      plateDescription={plateDescription}
+      platePrice={'R$ 49,97'}  
+    />,
+    <Card 
+      plateLink={'saladaRavanello'} 
+      plate={'Salada Ravanello'} 
+      imgSrc={SaladaRavanello} 
+      plateDescription={plateDescription}
+      platePrice={'R$ 49,97'}  
+    />,
+    <Card 
+      plateLink={'saladaRavanello'} 
+      plate={'Salada Ravanello'} 
+      imgSrc={SaladaRavanello} 
+      plateDescription={plateDescription}
+      platePrice={'R$ 49,97'}  
+    />,
     ];
   return(
     <Container>

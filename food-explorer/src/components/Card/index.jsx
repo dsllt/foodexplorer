@@ -1,10 +1,10 @@
 import { Button } from "../Button";
 import { Container, Main, Quantity } from "./styles";
-import SaladaRavanello from '../../assets/SaladaRavanello.png'
 
 import { FiPlus, FiMinus, FiHeart, FiChevronRight } from 'react-icons/fi'
+import { Link } from "react-router-dom";
 
-export function Card(){
+export function Card({ plateLink, plate, imgSrc, platePrice, plateDescription }){
   return(
     <Container>
       <div className="favorite">
@@ -13,13 +13,13 @@ export function Card(){
         </button>
       </div>
       <Main>
-        <img src={SaladaRavanello}/>
+        <img src={imgSrc}/>
         <div className="title">
-          <h3>Salada Ravanello </h3>
+          <Link to={`/plateReview/${plateLink}`}>{plate} </Link >
           <FiChevronRight size={16} strokeWidth= {5}/>
         </div>
-        <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
-        <h2>R$ 49,97</h2>
+        <p>{plateDescription}</p>
+        <h2>{platePrice}</h2>
 
         <div className="includeItem">
           <Quantity>

@@ -14,12 +14,15 @@ import saladaRavanello from '../../assets/plates/saladaRavenello.png'
 
 import ReceiptIcon from '../../assets/receipt-icon.svg'
 import { ButtonText } from '../../components/ButtonText';
+import { Link } from 'react-router-dom';
 
 export function PlateReview(){
     return(
         <Container>
             <Header isAdm={false}/>
-            <ButtonText icon={FiChevronLeft} title='voltar'/>
+            <Link to={'/'} >
+              <FiChevronLeft /> voltar
+            </Link>
             <Main>
                 <img src={saladaRavanello}/>
                 <Description>

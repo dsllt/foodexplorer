@@ -6,6 +6,18 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: space-between;
     
+    a{
+      color: ${({theme}) => theme.COLORS.WHITE};
+
+      
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 24px;
+      justify-content: flex-start;
+      margin-top: 24px;
+      margin-left: 122px;
+    }
     > button{
         font-family: 'Poppins';
         font-style: normal;
