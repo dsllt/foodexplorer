@@ -3,6 +3,7 @@ import LogoIcon from '../../assets/logo.svg'
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 import { ButtonText } from "../../components/ButtonText";
+import { Link } from "react-router-dom";
 
 export function SignIn(){
   return(
@@ -22,7 +23,9 @@ export function SignIn(){
       <Input placeholder='No mínimo 6 caracteres' bgColor={'transparent'} borderColor={'red'} border={'solid'} borderWidth={1} id='password' type="password" />
 
       <Button text='Entrar' type="submit" />
-      <ButtonText title='Criar uma conta'/>
+      <Link to='/register'>
+        Criar uma conta
+      </Link>
     </Form>
   </Container>
   )

@@ -1,14 +1,20 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 100%;
+  max-width: 100vw;
   height: 100vh;
+
+  display: grid;
+  grid-template-rows: 105px auto 105px;
+  grid-template-areas: "header" "content" "footer";
   
 `
 
 export const Main = styled.div`
+  grid-area: content;
   padding: 100px 123px;
-  
+  max-width: 100vw;
+  overflow-y: auto;
 `
 
 

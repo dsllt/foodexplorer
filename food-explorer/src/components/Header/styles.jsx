@@ -11,6 +11,16 @@ export const Container = styled.div`
   width: 100%;
 `
 
+export const ContainerUser = styled.div`
+  align-items: center;
+  background-color: ${({theme}) => theme.COLORS.BACKGROUND_700};
+  display: flex;
+  font-size: 16px;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+`
+
 export const Logo = styled.div`
   align-items: center;
   display: flex;
@@ -28,5 +38,21 @@ export const Logout = styled.button`
   border: none;
   >svg{
     color: ${({theme}) => theme.COLORS.WHITE};
+  }
+`
+
+export const ContainerAdm = styled.div`
+  align-items: center;
+  background-color: ${({theme}) => theme.COLORS.BACKGROUND_700};
+  display: flex;
+  font-size: 16px;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+
+  >div{
+    display: flex;
+    align-items: center;
+    gap: 16px;
   }
 `

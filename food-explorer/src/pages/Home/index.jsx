@@ -14,7 +14,7 @@ export function Home(){
     ];
   return(
     <Container>
-      <Header />
+      <Header isAdm={false}/>
       <Main>
         <Title>
           <img src={TitleImg}/>

@@ -18,7 +18,7 @@ import { ButtonText } from '../../components/ButtonText';
 export function PlateReview(){
     return(
         <Container>
-            <Header />
+            <Header isAdm={false}/>
             <ButtonText icon={FiChevronLeft} title='voltar'/>
             <Main>
                 <img src={saladaRavanello}/>

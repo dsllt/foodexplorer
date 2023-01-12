@@ -5,18 +5,14 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
-
-
-  
 `
 
 export const Main = styled.div`
   display: flex;
   flex-direction: row;
   gap: 116px;
-  justify-content: flex-start;
-  margin-left: 123px;
-  margin-top: 34px;
+  justify-content: center;
+  margin: 34px 120px;
 `
 
 export const Order = styled.div`
@@ -30,18 +26,24 @@ export const Order = styled.div`
     line-height: 160%;
     margin-top: 16px;
   }
-  
 `
 
-export const CardPayment = styled.div`
+export const PaymentMainBox = styled.div`
   >h1{
       margin-bottom: 32px;
     }
 `
+
+export const PaymentBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 530px;
+  height: 462px;
+`
+
 export const MethodSelection = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
 
   .pixBox, .creditoBox{
     align-items: center;
@@ -51,16 +53,15 @@ export const MethodSelection = styled.div`
     display: flex;
     flex-direction: row;
     font-family: 'Roboto';
-    font-weight: 400;
     font-size: 16px;
-    padding-top: 24px;
-    padding-bottom: 24px;
+    padding: 24px 0px;
     justify-content: center;
     width: 265px;
     
     >img {
       width: 24px;
-      height: 24px;
+      height: 24px;  
+      margin-right: 14px;
     }
   }
 
@@ -72,26 +73,15 @@ export const MethodSelection = styled.div`
     border-right: 1px solid ${({theme}) => theme.COLORS.TABLE_BORDER};
     border-top-right-radius: 10px;
   }
-
-  
 `
 
-export const PaymentBox = styled.div`
+export const PaymentInfo = styled.div`
+  align-items: center;
+  border: 1px solid;
+  border-color: ${({theme}) => theme.COLORS.TABLE_BORDER};
   display: flex;
-  flex-direction: column;
-  width: 530px;
-  height: 445px;
-
-  .paymentInfo{
-    border: 1px solid;
-    border-color: ${({theme}) => theme.COLORS.TABLE_BORDER};
-    height: 364px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-
-  }
+  justify-content: center;
+  padding: 71px 0;
 `
 
 export const CreditCardInfo = styled.div`
@@ -99,7 +89,7 @@ export const CreditCardInfo = styled.div`
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
-  padding: 59px 91px;
+  gap: 37px;
 
   #validade, #CVC, #cardNumber{
     background: transparent;
@@ -111,15 +101,77 @@ export const CreditCardInfo = styled.div`
     padding: 16px 14px;
     margin-top: 8px;
   }
+`
+
+export const CardNumber = styled.div`
+
+`
+
+export const CardValidityCVC = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+
+  #validade, #CVC {
+    width: 166px;
+  }
+`
+export const CashierPayment = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  gap: 37px;
+
+  >img{
+    width: 104px;
+    height: 104px;
+  }
+
+  >h2{
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 24px;
+    color: ${({theme}) => theme.COLORS.GREY_200};
+  }
+`
+
+export const ApprovedPayment = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  gap: 37px;
+
+  >img{
+    width: 104px;
+    height: 104px;
+  }
   
-  .cardInfo{
-      display: flex;
-      flex-direction: row;
-      gap: 10px;
+  >h2{
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 24px;
+    color: ${({theme}) => theme.COLORS.GREY_200};
+  }
+`
 
-      >div label{
-        margin-bottom: 8px;
-      }
+export const DeliveredOrder = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  gap: 37px;
 
-    }
+  >img{
+    width: 104px;
+    height: 104px;
+  }
+  
+  >h2{
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 24px;
+    color: ${({theme}) => theme.COLORS.GREY_200};
+  }
 `
