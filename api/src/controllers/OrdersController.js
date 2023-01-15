@@ -2,15 +2,15 @@ const knex = require('../database/knex')
 
 class OrdersController {
   async create(request, response) {
-    const { status, price, meals } = request.body;
-    const { userId } = request.params;
+    const { status, price, meals } = request.body
+    const userId = request.user.id
 
-    const orderId = await  knex('orders').insert({
+    const orderId = await knex('orders').insert({
       status,
       price,
       userId
-    });
-    
+    })
+
     // Verify id of ordered meals
     const existingMeals = await knex('meals').orderBy('name')
     const mealsIds = []
@@ -18,9 +18,9 @@ class OrdersController {
     meals.map(meal => {
       for (var key in existingMeals) {
         var meal_name = existingMeals[key].name
-        meal = meal.toLowerCase();
-        meal_name = meal_name.toLowerCase();
-        if(meal == meal_name) {
+        meal = meal.toLowerCase()
+        meal_name = meal_name.toLowerCase()
+        if (meal == meal_name) {
           mealsIds.push(existingMeals[key].id)
         }
       }
@@ -31,11 +31,11 @@ class OrdersController {
         orderId,
         mealId: meal
       }
-    });
+    })
 
-    await knex('orderMeal').insert(ordered_meals);
+    await knex('orderMeal').insert(ordered_meals)
 
-    response.json();
+    return response.json()
   }
 
   // async index(request, response) {
@@ -45,15 +45,15 @@ class OrdersController {
   // }
 
   async show(request, response) {
-    const id = request.params;
+    const id = request.user.id
 
     const meals = await knex('orderMeal')
-    .where('orderId', '=' ,id.id)
-    .innerJoin('meals', 'orderMeal.mealId', '=', 'meals.id')
-    .select('meals.name')
+      .where('orderId', '=', id)
+      .innerJoin('meals', 'orderMeal.mealId', '=', 'meals.id')
+      .select('meals.name')
 
-    response.json(meals)
+    return response.json(meals)
   }
 }
 
-module.exports = OrdersController;
+module.exports = OrdersController

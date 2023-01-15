@@ -35,7 +35,7 @@ class MealsController {
 
     await knex('mealIngredient').insert(mealIngredients);
 
-    response.json();
+    return response.json();
   }
 
   async delete(request, response){

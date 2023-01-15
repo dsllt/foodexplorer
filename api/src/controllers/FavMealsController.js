@@ -3,7 +3,7 @@ const knex = require('../database/knex')
 class FavMealsController {
   async create(request, response) {
     const { meals } = request.body;
-    const { userId } = request.params;
+    const  userId  = request.user.id;
     
     // Verify id of ordered meals
     const existingMeals = await knex('meals').orderBy('name')
@@ -29,14 +29,14 @@ class FavMealsController {
 
     await knex('favMeals').insert(favorited_meals);
 
-    response.json();
+    return response.json();
   }
 
   async show(request, response) {
-    const userId = request.params;
-    const favMeals = await knex('favMeals').where(userId);
-
-    response.json(favMeals)
+    const userId = request.user.id;
+    const favMeals = await knex('favMeals').where({userId});
+    
+    return response.json(favMeals)
   }
 }
 
