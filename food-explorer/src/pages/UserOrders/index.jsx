@@ -5,7 +5,7 @@ import { Container, Main, Orders } from "./styles";
 export function UserOrders(){
     return(
         <Container>
-            <Header isAdm={true}/>
+            <Header isAdm={false}/>
             <Main>
                 <h1>Pedidos</h1>
                 <Orders>

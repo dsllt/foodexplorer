@@ -3,8 +3,24 @@ import { Container, Main, Quantity } from "./styles";
 
 import { FiPlus, FiMinus, FiHeart, FiChevronRight } from 'react-icons/fi'
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export function Card({ plateLink, plate, imgSrc, platePrice, plateDescription, favPlate }){
+  const [ numPlates, setNumPlates ] = useState(1);
+
+  const increaseNumPlates = () => {
+    setNumPlates(numPlates + 1);
+  }
+
+  const decreaseNumPlates = () => {
+    if (numPlates >= 2){
+      setNumPlates(numPlates - 1);
+    } else {
+      setNumPlates(1);
+    }
+
+  }
+
   return(
     <Container>
       <div className="favorite">
@@ -24,10 +40,10 @@ export function Card({ plateLink, plate, imgSrc, platePrice, plateDescription, f
 
         <div className="includeItem">
           <Quantity>
-            <button type="button"><FiMinus size={20}/></button>
+            <button type="button" onClick={decreaseNumPlates}><FiMinus size={20}/></button>
 
-            <text>01</text>
-            <button type="button"><FiPlus size={20}/></button>
+            <text>{numPlates}</text>
+            <button type="button" onClick={increaseNumPlates}><FiPlus size={20}/></button>
 
           </Quantity>
           <Button text='incluir' />
