@@ -19,6 +19,10 @@ export const ContainerUser = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+
+  a{
+    color: ${({theme}) => theme.COLORS.WHITE};
+  }
 `
 
 export const Logo = styled.div`

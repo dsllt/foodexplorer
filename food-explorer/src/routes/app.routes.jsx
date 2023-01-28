@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { FavPlates } from '../pages/FavPlates';
 
 import { Home } from '../pages/Home';
 import { Payment } from '../pages/Payment';
@@ -16,6 +17,7 @@ export function AppRoutes() {
       <Route path='/plateReview/:plateName' element={<PlateReview />} />
       <Route path='/userOrders/:id' element={<UserOrders />} />
       <Route path='/userOrdersAdm' element={<UserOrdersAdm />} />
+      <Route path='/favOrders/:id' element={<FavPlates />} />
     </Routes>
   )
 }

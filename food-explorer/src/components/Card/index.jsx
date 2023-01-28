@@ -4,12 +4,13 @@ import { Container, Main, Quantity } from "./styles";
 import { FiPlus, FiMinus, FiHeart, FiChevronRight } from 'react-icons/fi'
 import { Link } from "react-router-dom";
 
-export function Card({ plateLink, plate, imgSrc, platePrice, plateDescription }){
+export function Card({ plateLink, plate, imgSrc, platePrice, plateDescription, favPlate }){
   return(
     <Container>
       <div className="favorite">
         <button>
-          <FiHeart size={30}/>
+          { !favPlate ? (<FiHeart size={30} />) : (<FiHeart size={30} style={{fill: 'white'}}/>)}
+          
         </button>
       </div>
       <Main>
