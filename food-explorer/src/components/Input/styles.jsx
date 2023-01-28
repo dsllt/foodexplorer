@@ -8,12 +8,19 @@ export const Container = styled.div`
   padding: 12px 14px;
   gap: 14px;
   width: 410px;
-  
+
   >input{
-    background: transparent;
+    background-color: transparent;
     border: none ;
     color: ${({theme}) => theme.COLORS.GREY_300};
     width: 100%;
     outline: none;
   }
+
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px ${({theme}) => theme.COLORS.BACKGROUND_700} inset;
+    -webkit-text-fill-color: ${({theme}) => theme.COLORS.GREY_300} !important;
+    caret-color: white;
+  }
+
 `

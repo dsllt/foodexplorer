@@ -16,7 +16,7 @@ function AuthProvider({children}) {
         localStorage.setItem("@foodexplorer:user", JSON.stringify(user))
         localStorage.setItem("@foodexplorer:token", token)
       
-        api.defaults.headers.authorization = `Bearer ${token}`
+        api.defaults.headers.common['Authorization']  = `Bearer ${token}`
         setData({ user, token });
 
       } catch (error) {
@@ -28,12 +28,19 @@ function AuthProvider({children}) {
       }
   }
 
+  function signOut() {
+    localStorage.removeItem("@foodexplorer:user");
+    localStorage.removeItem("@foodexplorer:token");
+
+    setData({});
+  }
+
   useEffect(() => {
     const token = localStorage.getItem("@foodexplorer:token");
     const user = localStorage.getItem("@foodexplorer:user");
 
     if(token && user){
-      api.defaults.headers.authorization = `Bearer ${token}`
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
       setData({ 
         user: JSON.parse(user),
@@ -44,7 +51,7 @@ function AuthProvider({children}) {
   }, [])
 
   return(
-    <AuthContext.Provider value={{ signIn, user: data.user }} >
+    <AuthContext.Provider value={{ signIn, user: data.user, signOut }} >
       {children}
     </AuthContext.Provider>
   )

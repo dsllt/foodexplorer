@@ -4,8 +4,10 @@ import ReceiptIcon from '../../assets/receipt-icon.svg'
 import { Input } from "../Input"
 import { Button } from "../Button"
 import { FiSearch, FiLogOut } from 'react-icons/fi'
+import { useAuth } from "../../hooks/auth"
 
 export function Header({isAdm}){
+  const { signOut } = useAuth()
   const item = 0
   return (
     <Container>
@@ -19,8 +21,8 @@ export function Header({isAdm}){
           <Input placeholder="Busque pelas opções de pratos" icon={FiSearch}/>
           <Button icon={ReceiptIcon} text={`Meu pedido (${item})`}/>
 
-          <Logout>
-          <FiLogOut size={32}/>
+          <Logout onClick={signOut}>
+            <FiLogOut size={32}/>
           </Logout>
 
         </ContainerUser>
@@ -34,8 +36,6 @@ export function Header({isAdm}){
             <a>Administrador</a>
             <Button icon={ReceiptIcon} text={`Meu pedido (${item})`}/>
           </div>
-
-
         </ContainerAdm>
        )}
     </Container>
