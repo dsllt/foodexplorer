@@ -12,9 +12,6 @@ const ingredientController = new IngredientController();
 ingredientsRoutes.post('/', ingredientController.create);
 ingredientsRoutes.get('/', ingredientController.show);
 ingredientsRoutes.delete('/', ingredientController.delete);
-ingredientsRoutes.patch('/avatar', upload.single('avatar'), (request, response) =>{
-  console.log(request.file.filename);
-  response.json();
-});
+ingredientsRoutes.patch('/image', upload.single('image'), ingredientController.update);
 
 module.exports = ingredientsRoutes;

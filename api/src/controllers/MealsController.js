@@ -1,4 +1,6 @@
-const knex = require('../database/knex')
+const knex = require('../database/knex');
+const AppError = require('../utils/AppError');
+const DiskStorage = require('../providers/DiskStorage');
 
 class MealsController {
   async create(request, response) {
@@ -46,6 +48,30 @@ class MealsController {
     })
 
     return response.json();
+  }
+
+  async update(request, response){
+    const name = request.body.name;
+    const imageFilename = request.file.filename;
+
+    const diskStorage = new DiskStorage();
+
+    const meal = await knex('meals').where({ name }).first();
+    
+    if(!meal){
+      throw new AppError('Esta refeição ainda não foi cadastrada.', 401);
+    }
+
+    if(meal.image){
+      await diskStorage.deleteFile(meal.image);
+    }
+
+    const filename = await diskStorage.saveFile(imageFilename);
+    meal.image = filename;
+
+      await knex('meals').update(meal).where({ name });
+
+    response.json({})
   }
 }
 
