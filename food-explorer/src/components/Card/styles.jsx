@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background-color: ${({theme}) => theme.COLORS.BACKGROUND_900};
+  background-color: ${({theme}) => theme.COLORS.DARK_100};
   border-radius: 8px;
   height: 512px;
   width: 300px;
@@ -11,7 +11,7 @@ export const Container = styled.div`
         background: none;
         border: none;
         margin: 20px 250px;
-        color: ${({theme}) => theme.COLORS.WHITE};
+        color: ${({theme}) => theme.COLORS.LIGHT_100};
       }
   }
 
@@ -44,7 +44,7 @@ export const Main = styled.div`
       font-weight: 700;
       font-size: 24px;
       line-height: 140%;
-      color: ${({theme}) => theme.COLORS.WHITE};
+      color: ${({theme}) => theme.COLORS.LIGHT_100};
     }
   }
 
@@ -52,7 +52,7 @@ export const Main = styled.div`
     font-weight: 400;
     font-size: 32px;
     line-height: 160%;
-    color: ${({theme}) => theme.COLORS.BLUE_LIGHT};
+    color: ${({theme}) => theme.COLORS.CAKE_100};
   }
 
   >text{
@@ -79,7 +79,7 @@ export const Quantity = styled.div`
   >button{
     background: none;
     border: none;
-    color: ${({theme}) => theme.COLORS.WHITE};
+    color: ${({theme}) => theme.COLORS.LIGHT_100};
   }
   
 `

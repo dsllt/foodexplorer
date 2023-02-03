@@ -24,7 +24,7 @@ export const Orders = styled.table`
   
   > tbody td, thead th{
     border: 2px solid;
-    border-color: ${({theme}) => theme.COLORS.TABLE_BORDER}
+    border-color: ${({theme}) => theme.COLORS.DARK_1000}
   }
 
   >thead th:first-child{
@@ -42,20 +42,20 @@ export const Orders = styled.table`
   }
 
   >thead tr th{
-    color: ${({theme}) => theme.COLORS.GREY_100};
+    color: ${({theme}) => theme.COLORS.LIGHT_500};
     font-weight: 700;
     padding: 21px 24px;
   }
 
   >tbody tr td{
-    color: ${({theme}) => theme.COLORS.GREY_200};
+    color: ${({theme}) => theme.COLORS.LIGHT_400};
     font-weight: 400;
     padding: 16px 24px;
   } 
 `
 
 export const Selection = styled.div`
-  border: 1px solid ${({theme}) => theme.COLORS.WHITE};
+  border: 1px solid ${({theme}) => theme.COLORS.LIGHT_100};
   border-radius: 5px;
   padding: 5px;
   display: flex;
@@ -83,7 +83,7 @@ export const colourStyles = {
   control: (styles) => ({ ...styles, backgroundColor: 'transparent', border: 'none', boxShadow: 'none', }),
   input: (styles) => ({ ...styles, ...dot(), }),
   placeholder: (styles)  => ({ ...styles, ...dot('#ccc') }),
-  singleValue: (styles, { data }) => ({ ...styles, ...dot(data.color),color: `${({theme}) => theme.COLORS.GREY_200}` }),
+  singleValue: (styles, { data }) => ({ ...styles, ...dot(data.color),color: `${({theme}) => theme.COLORS.LIGHT_400}` }),
   container: base => ({
     ...base,
     flex: 1,

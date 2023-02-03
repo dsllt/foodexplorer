@@ -17,9 +17,8 @@ export const Main = styled.div`
   }
 
   .addOrderButton{
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid ${({theme}) => theme.COLORS.WHITE};
-    width: 357px;
+    background-color:${({theme}) => theme.COLORS.TOMATO_400};
+    width: 200px;
     margin-bottom: 125px;
   }
 `
@@ -27,6 +26,8 @@ export const Main = styled.div`
 export const Form = styled.div`
   display: flex;
   flex-direction: column;
+
+
 
   .inputLine{
     display: flex;
@@ -39,11 +40,11 @@ export const Form = styled.div`
     display: flex;
     flex-direction: column;
 
-    >input {
-      background: transparent;
-      border: 1px solid ${({theme}) => theme.COLORS.WHITE};
-      border-radius: 5px;
-      color: ${({theme}) => theme.COLORS.GREY_300};
+    >input, select {
+      background: ${({theme}) => theme.COLORS.DARK_800};
+      border: none;
+      border-radius: 8px;
+      color: ${({theme}) => theme.COLORS.LIGHT_500};
       outline: none;
       
       padding: 12px 12px;
@@ -76,9 +77,10 @@ export const Form = styled.div`
     
     >textarea {
       background: transparent;
-      border: 1px solid ${({theme}) => theme.COLORS.WHITE};
-      border-radius: 5px;
-      color: ${({theme}) => theme.COLORS.GREY_300};
+      border: none;
+      background: ${({theme}) => theme.COLORS.DARK_800};
+      border-radius: 8px;
+      color: ${({theme}) => theme.COLORS.LIGHT_500};
       font-family: 'Roboto';
       font-weight: 400;
       font-size: 16px;
@@ -91,8 +93,9 @@ export const Form = styled.div`
   }
   
   .plateIngredients{
-    border: 1px solid ${({theme}) => theme.COLORS.WHITE};
-    border-radius: 5px;
+    border: none;
+    background: ${({theme}) => theme.COLORS.DARK_800};
+    border-radius: 8px;
 
     display: flex;
     align-items: center;
@@ -100,13 +103,15 @@ export const Form = styled.div`
     margin-top: 8px;
     padding: 3px 8px 8px 8px;
     min-height: 50px;
-    max-width: 472px;
+    width: auto;
+    //max-width: 472px;
     flex-wrap: wrap;
   }
 
   #plateImage{
-    border: 1px solid;
-    border-radius: 5px;
+    border: none;
+    background: ${({theme}) => theme.COLORS.DARK_800};
+    border-radius: 8px;
     cursor: pointer;
     display: flex;
     gap: 8px;

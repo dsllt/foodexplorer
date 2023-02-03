@@ -23,7 +23,7 @@ export const Orders = styled.table`
   
   > tbody td, thead th{
     border: 2px solid;
-    border-color: ${({theme}) => theme.COLORS.TABLE_BORDER}
+    border-color: ${({theme}) => theme.COLORS.DARK_1000}
   }
 
   >thead th:first-child{
@@ -41,13 +41,13 @@ export const Orders = styled.table`
   }
 
   >thead tr th{
-    color: ${({theme}) => theme.COLORS.GREY_100};
+    color: ${({theme}) => theme.COLORS.LIGHT_500};
     font-weight: 700;
     padding: 21px 24px;
   }
 
   >tbody tr td{
-    color: ${({theme}) => theme.COLORS.GREY_200};
+    color: ${({theme}) => theme.COLORS.LIGHT_400};
     font-weight: 400;
     padding: 16px 24px;
   }
@@ -61,17 +61,17 @@ export const Orders = styled.table`
 
   #pendente{
     font-size: 30px;
-    color: ${({theme}) => theme.COLORS.RED};
+    color: ${({theme}) => theme.COLORS.TOMATO_300};
   }
 
   #entregue{
     font-size: 30px;
-    color: ${({theme}) => theme.COLORS.GREEN};
+    color: ${({theme}) => theme.COLORS.MINT_100};
   }
 
   #preparando{
     font-size: 30px;
-    color: ${({theme}) => theme.COLORS.YELLOW};
+    color: ${({theme}) => theme.COLORS.CARROT_100};
   }
     
 `

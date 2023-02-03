@@ -8,8 +8,8 @@ export default createGlobalStyle`
   }
 
   body {
-    background-color: ${({theme}) => theme.COLORS.BACKGROUND_800};
-    color: ${({theme}) => theme.COLORS.WHITE};
+    background-color: ${({theme}) => theme.COLORS.DARK_400};
+    color: ${({theme}) => theme.COLORS.LIGHT_100};
   }
   
   body, input, ul, li, text {

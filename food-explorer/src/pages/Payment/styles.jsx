@@ -48,8 +48,8 @@ export const MethodSelection = styled.div`
   .pixBox, .creditoBox{
     align-items: center;
     background: none;
-    border-color: ${({theme}) => theme.COLORS.TABLE_BORDER};
-    color: ${({theme}) => theme.COLORS.WHITE} ;
+    border-color: ${({theme}) => theme.COLORS.DARK_1000};
+    color: ${({theme}) => theme.COLORS.LIGHT_100} ;
     display: flex;
     flex-direction: row;
     font-family: 'Roboto';
@@ -66,11 +66,11 @@ export const MethodSelection = styled.div`
   }
 
   .pixBox{
-    border-left: 1px solid ${({theme}) => theme.COLORS.TABLE_BORDER};
+    border-left: 1px solid ${({theme}) => theme.COLORS.DARK_1000};
     border-top-left-radius: 10px;
   }
   .creditoBox{
-    border-right: 1px solid ${({theme}) => theme.COLORS.TABLE_BORDER};
+    border-right: 1px solid ${({theme}) => theme.COLORS.DARK_1000};
     border-top-right-radius: 10px;
   }
 `
@@ -78,7 +78,7 @@ export const MethodSelection = styled.div`
 export const PaymentInfo = styled.div`
   align-items: center;
   border: 1px solid;
-  border-color: ${({theme}) => theme.COLORS.TABLE_BORDER};
+  border-color: ${({theme}) => theme.COLORS.DARK_1000};
   display: flex;
   justify-content: center;
   padding: 71px 0;
@@ -93,9 +93,9 @@ export const CreditCardInfo = styled.div`
 
   #validade, #CVC, #cardNumber{
     background: transparent;
-    border: 1px solid ${({theme}) => theme.COLORS.WHITE};
+    border: 1px solid ${({theme}) => theme.COLORS.LIGHT_100};
     border-radius: 5px;
-    color: ${({theme}) => theme.COLORS.GREY_300};
+    color: ${({theme}) => theme.COLORS.LIGHT_500};
     width: 100%;
     outline: none;
     padding: 16px 14px;
@@ -132,7 +132,7 @@ export const CashierPayment = styled.div`
     font-family: 'Roboto';
     font-weight: 400;
     font-size: 24px;
-    color: ${({theme}) => theme.COLORS.GREY_200};
+    color: ${({theme}) => theme.COLORS.LIGHT_400};
   }
 `
 
@@ -152,7 +152,7 @@ export const ApprovedPayment = styled.div`
     font-family: 'Roboto';
     font-weight: 400;
     font-size: 24px;
-    color: ${({theme}) => theme.COLORS.GREY_200};
+    color: ${({theme}) => theme.COLORS.LIGHT_400};
   }
 `
 
@@ -172,6 +172,6 @@ export const DeliveredOrder = styled.div`
     font-family: 'Roboto';
     font-weight: 400;
     font-size: 24px;
-    color: ${({theme}) => theme.COLORS.GREY_200};
+    color: ${({theme}) => theme.COLORS.LIGHT_400};
   }
 `

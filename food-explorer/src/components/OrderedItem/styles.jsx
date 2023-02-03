@@ -28,7 +28,7 @@ export const Container = styled.div`
       }
     }
       >button{
-        color: ${({theme}) => theme.COLORS.RED_LIGHT};
+        color: ${({theme}) => theme.COLORS.TOMATO_400};
       }
   }
 

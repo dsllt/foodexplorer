@@ -27,7 +27,7 @@ export const Logo = styled.div`
   }
 `
 export const Form = styled.form`
-  background-color: ${({theme}) => theme.COLORS.BACKGROUND_700};
+  background-color: ${({theme}) => theme.COLORS.DARK_700};
   border-radius: 16px;
   display: flex;
   flex-direction: column;
@@ -37,7 +37,7 @@ export const Form = styled.form`
 
   >label{
     align-self: flex-start;
-    color: ${({theme}) => theme.COLORS.GREY_200};
+    color: ${({theme}) => theme.COLORS.LIGHT_400};
     font-family: 'Roboto';
     font-weight: 400;
     font-size: 16px;
@@ -53,7 +53,7 @@ export const Form = styled.form`
   }
 
   a{
-    color: ${({theme}) => theme.COLORS.WHITE};
+    color: ${({theme}) => theme.COLORS.LIGHT_100};
     margin-top: 32px;
 
     font-family: 'Poppins';

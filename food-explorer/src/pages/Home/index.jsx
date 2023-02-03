@@ -7,11 +7,27 @@ import { Card } from "../../components/Card"
 import { Hover } from "../../components/Hover"
 
 import SaladaRavanello from '../../assets/SaladaRavanello.png'
+import { useState } from "react"
+import { useEffect } from "react"
 const plateDescription = 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim'
 
 
 
 export function Home(){
+  const [numOfPlates, setNumOfPlates] = useState(0);
+  const [numTotalOfPlates, setNumTotalOfPlates] = useState(0);
+
+
+  function handleIncludeItem(){
+    setNumTotalOfPlates(numTotalOfPlates + numTotalOfPlates)
+    
+    return numOfTotalPlates
+  }
+
+  useEffect(()=>{
+    setNumTotalOfPlates(numOfPlates)
+  },[numOfPlates])
+
   const slides = [
     <Card 
       plateLink={'saladaRavanello'} 
@@ -19,6 +35,7 @@ export function Home(){
       imgSrc={SaladaRavanello} 
       plateDescription={plateDescription}
       platePrice={'R$ 49,97'}  
+      setNumOfPlates={setNumOfPlates}
     />,
     <Card 
       plateLink={'saladaRavanello'} 
@@ -26,6 +43,7 @@ export function Home(){
       imgSrc={SaladaRavanello} 
       plateDescription={plateDescription}
       platePrice={'R$ 49,97'}  
+      setNumOfPlates={setNumOfPlates}
     />,
     <Card 
       plateLink={'saladaRavanello'} 
@@ -37,7 +55,7 @@ export function Home(){
     ];
   return(
     <Container>
-      <Header isAdm={false}/>
+      <Header  numOfPlates={numTotalOfPlates}/>
       <Main>
         <Title>
           <img src={TitleImg}/>

@@ -7,11 +7,12 @@ export const AuthContext = createContext({});
 
 function AuthProvider({children}) {
   const [ data, setData ] = useState({});
+  const [ meal, setMeal ] = useState({});
 
   async function signIn({ email, password }) {
       try { 
         const response = await api.post("/sessions", { email, password })
-        const{ user, token } = response.data;
+        const { user, token } = response.data;
 
         localStorage.setItem("@foodexplorer:user", JSON.stringify(user))
         localStorage.setItem("@foodexplorer:token", token)
@@ -35,6 +36,20 @@ function AuthProvider({children}) {
     setData({});
   }
 
+  async function updateMeal({ meal }){
+    try {
+      const response = await api.post("/meals", meal)
+      const { user, token } = response.data;
+      await api.get('/meals', meal)
+    } catch (error) {
+      if (error.response){
+        alert(error.response.data.message)
+      } else {
+        alert('Não foi possível atualziar o prato')
+      }
+    }
+  }
+
   useEffect(() => {
     const token = localStorage.getItem("@foodexplorer:token");
     const user = localStorage.getItem("@foodexplorer:user");
@@ -51,7 +66,7 @@ function AuthProvider({children}) {
   }, [])
 
   return(
-    <AuthContext.Provider value={{ signIn, user: data.user, signOut }} >
+    <AuthContext.Provider value={{ signIn, user: data.user, signOut, updateMeal }} >
       {children}
     </AuthContext.Provider>
   )

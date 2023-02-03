@@ -7,7 +7,7 @@ export const Container = styled.div`
     justify-content: space-between;
     
     a{
-      color: ${({theme}) => theme.COLORS.WHITE};
+      color: ${({theme}) => theme.COLORS.LIGHT_100};
 
       
       font-family: 'Poppins';
@@ -76,7 +76,7 @@ export const Sale = styled.div`
         font-weight: 400;
         font-size: 32px;
         line-height: 160%;
-        color: ${({theme}) => theme.COLORS.BLUE_LIGHT};
+        color: ${({theme}) => theme.COLORS.CAKE_100};
         margin-right: 52px;
     }
 
@@ -88,7 +88,7 @@ export const Sale = styled.div`
         >button{
             background: none;
             border: none;
-            color: ${({theme}) => theme.COLORS.WHITE};
+            color: ${({theme}) => theme.COLORS.LIGHT_100};
         }
 
     }

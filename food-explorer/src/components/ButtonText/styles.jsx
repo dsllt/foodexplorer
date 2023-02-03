@@ -6,7 +6,7 @@ export const Container = styled.button`
   display: flex;
   background: none;
   border: none;
-  color: ${({theme}) => theme.COLORS.WHITE};
+  color: ${({theme}) => theme.COLORS.LIGHT_100};
 
 
   font-family: 'Poppins';
