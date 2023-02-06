@@ -33,9 +33,9 @@ export function Card({ plateLink, plate, imgSrc, platePrice, plateDescription, f
   return(
     <Container>
       <div className="favorite">
-        <button>
+        <button >
           {user.isAdmin ? (
-            <img src={EditIcon} onClick={() => {navigate("/plateAdd")}}/>
+            <img src={EditIcon} onClick={() => {navigate("/plateEdit")}}/>
           ) : (
             !favPlate ? (<FiHeart size={30} />) : (<FiHeart size={30} style={{fill: 'white'}}/>)
           )}
@@ -50,16 +50,19 @@ export function Card({ plateLink, plate, imgSrc, platePrice, plateDescription, f
         <p>{plateDescription}</p>
         <h2>{platePrice}</h2>
 
-        <div className="includeItem">
-          <Quantity>
-            <button type="button" onClick={decreaseNumOfSamePlates}><FiMinus size={20}/></button>
+        {user.isAdmin ? (
+          <></>
+        ) : (
+          <div className="includeItem">
+            <Quantity>
+              <button type="button" onClick={decreaseNumOfSamePlates}><FiMinus size={20}/></button>
+              <text>{numOfSamePlates}</text>
+              <button type="button" onClick={increaseNumOfSamePlates}><FiPlus size={20}/></button>
+            </Quantity>
+            <Button text='incluir' onClick={()=>setNumOfPlates(handlenumOfTotalPlates)}/>
+          </div>
+        )}
 
-            <text>{numOfSamePlates}</text>
-            <button type="button" onClick={increaseNumOfSamePlates}><FiPlus size={20}/></button>
-
-          </Quantity>
-          <Button text='incluir' onClick={()=>setNumOfPlates(handlenumOfTotalPlates)}/>
-        </div>
       </Main>
     </Container>
   )

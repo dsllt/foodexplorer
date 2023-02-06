@@ -14,7 +14,7 @@ export const Main = styled.div`
   grid-area: content;
   padding-left: 123px;
   margin-bottom: 20px;
-  max-width: 100vw;
+  max-width: 1368px;
   overflow-y: auto;  
   flex-wrap: wrap;
 

@@ -23,6 +23,13 @@ export const ContainerUser = styled.div`
 
   a{
     color: ${({theme}) => theme.COLORS.LIGHT_100};
+    white-space: nowrap;
+    margin-left: 32px;
+  }
+
+  .myOrderButton{
+    width: 216px;
+    white-space: nowrap;
   }
 `
 
@@ -32,6 +39,8 @@ export const Logo = styled(Link)`
   font-size: 26px;
   font-weight: 700;
   color: ${({theme}) => theme.COLORS.LIGHT_100};
+
+  white-space: nowrap;
 
   .logoImg{
     filter: invert(24%) sepia(96%) saturate(600%) hue-rotate(153deg) brightness(100%) contrast(96%);
@@ -54,6 +63,7 @@ export const LogoText = styled.div`
 export const Logout = styled.button`
   background: none;
   border: none;
+  margin-left: 32px;
   >svg{
     color: ${({theme}) => theme.COLORS.LIGHT_100};
   }
@@ -67,5 +77,9 @@ export const ContainerAdm = styled.div`
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
+
+  .newPlateButton{
+    width: 216px;
+  }
 
 `

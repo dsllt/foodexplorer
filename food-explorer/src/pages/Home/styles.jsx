@@ -14,7 +14,9 @@ export const Main = styled.div`
   grid-area: content;
   padding: 100px 123px;
   max-width: 100vw;
-  overflow-y: auto;
+  overflow-y: scroll;
+
+
 `
 
 

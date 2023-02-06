@@ -13,9 +13,7 @@ export const Container = styled.button`
   padding: 12px 33px;
 
   >text {
-    font-family: 'Poppins';
-    font-weight: 500;
-    font-size: 14px;
+    font: ${({theme}) => theme.FONTS.POPPINGS_100_MEDIUM};
   }
 
   >img{

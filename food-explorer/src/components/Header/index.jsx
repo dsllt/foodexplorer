@@ -23,7 +23,7 @@ export function Header({isAdm, numOfPlates }){
           <Link to={`/favOrders/${user.id}`}> Meus favoritos </Link>
           
           <Input placeholder="Busque pelas opções de pratos" icon={FiSearch}/>
-          <Button icon={ReceiptIcon} text={`Meu pedido (${numOfPlates})`} onClick={() => {navigate("/userOrders/1");}}
+          <Button className='myOrderButton' icon={ReceiptIcon} text={`Pedidos (${numOfPlates})`} onClick={() => {navigate("/userOrders/1");}}
           />
 
           <Logout onClick={signOut}>
@@ -41,7 +41,11 @@ export function Header({isAdm, numOfPlates }){
               <span>admin</span>
           </LogoText>
           <Input placeholder="Busque pelas opções de pratos" icon={FiSearch}/>
-          <Button text={`Novo prato`} onClick={() => {navigate("/plateAdd");}}/>
+          <Button className='newPlateButton' text={`Novo prato`} onClick={() => {navigate("/plateAdd");}}/>
+
+          <Logout onClick={signOut}>
+            <FiLogOut size={32}/>
+          </Logout>
         </ContainerAdm>
        )}
     </Container>

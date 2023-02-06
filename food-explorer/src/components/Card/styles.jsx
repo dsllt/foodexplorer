@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const Container = styled.div`
   background-color: ${({theme}) => theme.COLORS.DARK_100};
   border-radius: 8px;
-  height: 512px;
-  width: 300px;
+  height: 462px;
+  width: 304px;
 
   .favorite{
       >button{
@@ -12,6 +12,8 @@ export const Container = styled.div`
         border: none;
         margin: 20px 250px;
         color: ${({theme}) => theme.COLORS.LIGHT_100};
+
+        position: fixed;
       }
   }
 
@@ -24,6 +26,17 @@ export const Main = styled.div`
   gap: 16px;
   justify-content: center; 
   text-align: center;
+  padding-top: 24px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+
+  >p{
+    font-size: 14px;
+    line-height: 160%;
+    color: ${({theme}) => theme.COLORS.LIGHT_400};
+  }
 
   >img{
     width: 176px;
@@ -39,8 +52,6 @@ export const Main = styled.div`
     justify-content: center;
 
     >a{
-      font-family: 'Poppins';
-      font-style: normal;
       font-weight: 700;
       font-size: 24px;
       line-height: 140%;
@@ -48,17 +59,7 @@ export const Main = styled.div`
     }
   }
 
-  >h2{
-    font-weight: 400;
-    font-size: 32px;
-    line-height: 160%;
-    color: ${({theme}) => theme.COLORS.CAKE_100};
-  }
-
   >text{
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
     font-size: 14px;
     line-height: 160%;
     width: 220px;

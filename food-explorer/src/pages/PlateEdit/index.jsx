@@ -8,7 +8,7 @@ import { useState } from "react";
 import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
 
-export function PlateAdd(){
+export function PlateEdit(){
   const [ ingredients, setIngredients ] = useState([])
   const [ newIngredient, setNewIngredient ] = useState("")
   const [ image, setImage ] = useState(" ")
@@ -61,7 +61,7 @@ export function PlateAdd(){
       <Header />
 
       <Main>
-        <h1>Adicionar prato</h1>
+        <h1>Editar prato</h1>
         <Form>
           <div className="inputLine">
             <div className="input-wrapper-minor">
@@ -140,6 +140,7 @@ export function PlateAdd(){
         </Form>
 
         <div>
+          <Button className='deleteOrderButton' text='Excluir prato' onClick={handleAddPlate}/>
           <Button className='addOrderButton' text='Salvar alterações' onClick={handleAddPlate}/>
         </div>
       </Main>

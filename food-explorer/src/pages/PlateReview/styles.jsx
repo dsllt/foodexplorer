@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
     height: 100vh;
@@ -8,21 +9,23 @@ export const Container = styled.div`
     
     a{
       color: ${({theme}) => theme.COLORS.LIGHT_100};
-
-      
       font-family: 'Poppins';
       font-style: normal;
-      font-weight: 500;
+      font-weight: 700;
       font-size: 24px;
+      line-height: 140%;
+
       justify-content: flex-start;
-      margin-top: 24px;
+      margin-top: 32px;
       margin-left: 122px;
     }
+
     > button{
         font-family: 'Poppins';
         font-style: normal;
         font-weight: 500;
         font-size: 24px;
+
         justify-content: flex-start;
         margin-left: 122px;
         margin-top: 24px;
@@ -94,6 +97,12 @@ export const Sale = styled.div`
     }
 
     >Button{
-        padding: 12px 4px;
+        padding: 12px 24px;
     }
+`
+
+export const LinkPage = styled(Link)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `

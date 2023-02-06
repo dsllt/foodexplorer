@@ -33,6 +33,7 @@ export function SignIn(){
         bgColor={'transparent'} 
         borderColor={'red'} border={'solid'} borderWidth={1} id='email' 
         type="email"
+        justifyContent= 'flex-start'
         onChange={e => setEmail(e.target.value)}
       />
 
@@ -44,6 +45,7 @@ export function SignIn(){
         borderWidth={1} 
         id='password' 
         type="password" 
+        justifyContent= 'flex-start'
         onChange={e => setPassword(e.target.value)}
       />
 

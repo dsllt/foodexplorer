@@ -1,10 +1,9 @@
 import { Container } from "./styles";
 
-export function Ingredient({imgSrc, altImg, text}){
+export function Ingredient({text}){
     return(
-        <Container>
-            <img src={imgSrc} alt={altImg}/>
-            <text>{text}</text>
-        </Container>
+      <Container>
+        <text>{text}</text>
+      </Container>
     )
 }

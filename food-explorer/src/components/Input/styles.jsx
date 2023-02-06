@@ -11,7 +11,10 @@ export const Container = styled.div`
   padding: 12px 14px;
   gap: 14px;
   
-  width: 581px;
+  //width: 581px;
+  width: 100%;
+  margin-left: 32px;
+  margin-right: 32px;
 
   >input{
     background-color: transparent;

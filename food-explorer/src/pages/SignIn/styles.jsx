@@ -6,7 +6,8 @@ export const Container = styled.div`
   flex-direction: row;
   gap: 306px;
   justify-content: center;
-  margin-top: 90px;
+
+  height: 100vh;
 `
 
 export const Logo = styled.div`
@@ -34,6 +35,10 @@ export const Form = styled.form`
   justify-content: center;
   align-items: center;
   padding: 64px;
+
+  Input{
+    width: 240px;
+  }
 
   >label{
     align-self: flex-start;
