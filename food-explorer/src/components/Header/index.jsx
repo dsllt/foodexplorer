@@ -39,10 +39,10 @@ export function Header({isAdm, numOfPlates }){
        ) : (
         <ContainerAdm>
           <LogoText>
-              <Logo to={"/"}>
+              <Link to={"/"} className='logoLinkHome'>
                 <img src={LogoIcon} className='logoImg'/>
                 <text>food explorer</text>
-              </Logo>
+              </Link>
               <span>admin</span>
           </LogoText>
           <Input placeholder="Busque pelas opções de pratos" icon={FiSearch}/>

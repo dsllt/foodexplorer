@@ -63,6 +63,20 @@ export const LeftLinks = styled.div`
 export const LogoText = styled.div`
   display: flex;
   flex-direction: column;
+  .logoLinkHome{
+    font-size: 26px;
+    font-weight: 700;
+    color: ${({theme}) => theme.COLORS.LIGHT_100};
+    white-space: nowrap;
+    margin: 0;
+    display: flex;
+    align-items: center;
+
+    >img{
+    filter: invert(24%) sepia(96%) saturate(600%) hue-rotate(153deg) brightness(100%) contrast(96%);
+    margin-right: 12px;
+    }
+  }
   >span{
     font-family: 'Roboto';
     font-style: normal;

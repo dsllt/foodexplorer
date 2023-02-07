@@ -17,6 +17,20 @@ export function PlateEdit(){
   const [ description, setDescription ] = useState("")
   const [ category, setCategory ] = useState("")
 
+  async function loadMeal(){
+    try {
+      const response = await api.get('/meals', meal)
+      console.log(response)
+    } catch (error) {
+      if (error.response){
+        alert(error.response.data.message)
+      } else {
+        alert('Não foi possível carregar os dados do prato')
+      }
+    }
+  
+  }
+
 
   async function handleAddPlate(){
       if (!name || !image || !ingredients || !price || !description || !category){
@@ -140,8 +154,8 @@ export function PlateEdit(){
         </Form>
 
         <div>
-          <Button className='deleteOrderButton' text='Excluir prato' onClick={handleAddPlate}/>
-          <Button className='addOrderButton' text='Salvar alterações' onClick={handleAddPlate}/>
+          <Button className='deleteOrderButton' text='Excluir prato' onClick={loadMeal}/>
+          <Button className='addOrderButton' text='Salvar alterações' onClick={loadMeal}/>
         </div>
       </Main>
       <Footer />
