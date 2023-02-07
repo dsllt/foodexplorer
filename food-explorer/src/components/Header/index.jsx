@@ -1,4 +1,4 @@
-import { Container, ContainerUser, ContainerAdm, Logo, Logout, LogoText } from "./styles"
+import { Container, ContainerUser, ContainerAdm, Logout, LogoText, LeftLinks } from "./styles"
 import LogoIcon from '../../assets/logo.svg'
 import ReceiptIcon from '../../assets/receipt-icon.svg'
 import { Input } from "../Input"
@@ -16,11 +16,16 @@ export function Header({isAdm, numOfPlates }){
     <Container>
       {user.isAdmin == 0 ? (
         <ContainerUser>
-          <Logo to={"/"}>
-            <img src={LogoIcon} className='logoImg'/>
-            <text>food explorer</text>
-          </Logo>
-          <Link to={`/favOrders/${user.id}`}> Meus favoritos </Link>
+          <LeftLinks>
+              <Link to={"/"} className='logoLinkHome'>
+                <img src={LogoIcon} />
+                <text>food explorer</text>
+              </Link>
+
+              <Link to={`/favOrders/${user.id}`} className='userFavorites'> Meus favoritos </Link>
+          </LeftLinks>
+              
+
           
           <Input placeholder="Busque pelas opções de pratos" icon={FiSearch}/>
           <Button className='myOrderButton' icon={ReceiptIcon} text={`Pedidos (${numOfPlates})`} onClick={() => {navigate("/userOrders/1");}}

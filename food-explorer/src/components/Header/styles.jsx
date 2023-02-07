@@ -21,31 +21,44 @@ export const ContainerUser = styled.div`
   justify-content: space-between;
   width: 100%;
 
-  a{
-    color: ${({theme}) => theme.COLORS.LIGHT_100};
-    white-space: nowrap;
-    margin-left: 32px;
-  }
-
   .myOrderButton{
     width: 216px;
     white-space: nowrap;
   }
 `
 
-export const Logo = styled(Link)`
+export const LeftLinks = styled.div`
   align-items: center;
   display: flex;
-  font-size: 26px;
-  font-weight: 700;
-  color: ${({theme}) => theme.COLORS.LIGHT_100};
+  flex-direction: row;
 
-  white-space: nowrap;
+  .logoLinkHome{
+    font-size: 26px;
+    font-weight: 700;
+    color: ${({theme}) => theme.COLORS.LIGHT_100};
+    white-space: nowrap;
+    margin: 0;
+    display: flex;
+    align-items: center;
 
-  .logoImg{
+    >img{
     filter: invert(24%) sepia(96%) saturate(600%) hue-rotate(153deg) brightness(100%) contrast(96%);
     margin-right: 12px;
+    }
   }
+
+  .userFavorites{
+    color: ${({theme}) => theme.COLORS.LIGHT_100};
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 16px;
+    margin: 0;
+    margin-left: 32px;
+
+    white-space: nowrap;
+  }
+
+  
 `
 export const LogoText = styled.div`
   display: flex;
