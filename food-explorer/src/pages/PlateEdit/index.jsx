@@ -4,7 +4,7 @@ import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { Button } from "../../components/Button";
 import { IngredientsInput } from "../../components/IngredientsInput";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
 
@@ -17,57 +17,41 @@ export function PlateEdit(){
   const [ description, setDescription ] = useState("")
   const [ category, setCategory ] = useState("")
 
-  async function loadMeal(){
+  const [ meals, setMeals ] = useState([]);
+
+  useEffect(()=>{
+    async function fetchMeals(){    
+      const id = 1;
     try {
-      const response = await api.get('/meals', meal)
-      console.log(response)
+      const response = await api.get(`/meals/${id}`);
+      setDescription(response.data.description);
+      setImage(response.data.image);
+      setName(response.data.name);
+      setPrice(response.data.price);
+      setCategory(response.data.category);
+      //setIngredients(response.data.ingredients);
+
+      console.log(response.data)
     } catch (error) {
-      if (error.response){
-        alert(error.response.data.message)
+      if (error.response){ alert(error.response.data.message, typeof error.response.data.message)
       } else {
         alert('Não foi possível carregar os dados do prato')
       }
     }
-  
-  }
-
-
-  async function handleAddPlate(){
-      if (!name || !image || !ingredients || !price || !description || !category){
-          return alert("Preencha todos os campos");
-        }
-        
-      api.post('/meals', { name, image, ingredients, price, description, category })
-      .then(() => {
-          alert("Prato cadastrado com sucesso!");
-          setIngredients([]);
-          setImage(" ");
-          setName("");
-          setPrice("");
-          setCategory("");
-          setDescription("");
-      })
-      .catch(error => {
-        if(error.response){
-          alert(error.response.data.message);
-        }else{
-          alert('Não foi possível cadastrar o prato.')
-        }
-      })
-    
-  }
-
-  function handleNewIngredients(){
-    if (newIngredient !== ""){
-      setIngredients(prevState => [...prevState, newIngredient])
-      setNewIngredient("")
-    } else {
-      alert('Por favor, informe um ingrediente.')
     }
-  }
+    fetchMeals();
+  }, [])
 
-  function handleDeleteIngredients(deleted){
-    setIngredients(prevState => prevState.filter( ingredient => ingredient !== deleted))
+  async function loadMeal(){
+    const id = 1
+    try {
+      const response = await api.get(`/meals/${id}`)
+    } catch (error) {
+      if (error.response){ alert(error.response.data.message, typeof error.response.data.message)
+      } else {
+        alert('Não foi possível carregar os dados do prato')
+      }
+    }
   }
 
   return(
@@ -117,7 +101,7 @@ export function PlateEdit(){
               <label htmlFor="plateIngredients">Ingredientes</label>
               <div className="plateIngredients">
                 {ingredients.map((ingredient, index) => (
-                  <IngredientsInput id="plateIngredients" placeholder={ingredient} key={String(index)} onClick={() => handleDeleteIngredients(ingredient)}/>
+                  <IngredientsInput id="plateIngredients" placeholder={ingredient} key={String(index)} />
                 ))}
                 <IngredientsInput 
                   id="plateIngredients" 
@@ -125,7 +109,6 @@ export function PlateEdit(){
                   value={newIngredient}
                   isNew 
                   onChange={e => setNewIngredient(e.target.value)} 
-                  onClick={handleNewIngredients}
                 />
               </div>
             </div>

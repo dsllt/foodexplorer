@@ -10,7 +10,7 @@ const upload = multer(uploadConfig.MULTER);
 const ingredientController = new IngredientController();
 
 ingredientsRoutes.post('/', ingredientController.create);
-ingredientsRoutes.get('/', ingredientController.show);
+ingredientsRoutes.get('/:id', ingredientController.show);
 ingredientsRoutes.delete('/', ingredientController.delete);
 ingredientsRoutes.patch('/image', upload.single('image'), ingredientController.update);
 
