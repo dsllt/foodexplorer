@@ -66,7 +66,7 @@ export function PlateAdd(){
   async function handleSelectImage(event){
     const file = event.target.files[0];
     const fileUploadForm = new FormData();
-    console.log('upload form', fileUploadForm.entries())
+    fileUploadForm.append('image', file);
     
     const response = await api.patch('/meals/image', fileUploadForm);
     setImage(response.data)
