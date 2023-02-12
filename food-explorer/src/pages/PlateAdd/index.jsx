@@ -11,7 +11,8 @@ import { useAuth } from "../../hooks/auth";
 export function PlateAdd(){
   const [ ingredients, setIngredients ] = useState([])
   const [ newIngredient, setNewIngredient ] = useState("")
-  const [ image, setImage ] = useState(" ")
+  const [ image, setImage ] = useState(null)
+  const [ imageFile, setImageFile ] = useState(null)
   const [ name, setName ] = useState("")
   const [ price, setPrice ] = useState("")
   const [ description, setDescription ] = useState("")
@@ -20,6 +21,12 @@ export function PlateAdd(){
 
   async function handleAddPlate(){
       if (!name || !image || !ingredients || !price || !description || !category){
+        console.log('nome', name, )
+        console.log('imagem', image)
+        console.log('ingrediente', ingredients, )
+        console.log('preço', price)
+        console.log('descr',description)
+        console.log('cate', category)
           return alert("Preencha todos os campos");
         }
         
@@ -27,7 +34,7 @@ export function PlateAdd(){
       .then(() => {
           alert("Prato cadastrado com sucesso!");
           setIngredients([]);
-          setImage(" ");
+          setImage(null);
           setName("");
           setPrice("");
           setCategory("");
@@ -56,6 +63,15 @@ export function PlateAdd(){
     setIngredients(prevState => prevState.filter( ingredient => ingredient !== deleted))
   }
 
+  async function handleSelectImage(event){
+    const file = event.target.files[0];
+    const fileUploadForm = new FormData();
+    console.log('upload form', fileUploadForm.entries())
+    
+    const response = await api.patch('/meals/image', fileUploadForm);
+    setImage(response.data)
+  }
+
   return(
     <Container>
       <Header />
@@ -64,17 +80,24 @@ export function PlateAdd(){
         <h1>Adicionar prato</h1>
         <Form>
           <div className="inputLine">
+
             <div className="input-wrapper-minor">
-              <label htmlFor="plateName">Imagem do prato</label>
+              <text>Imagem do prato</text>
               <div id="plateImage">
-                <FiUpload size={20}/> Selecionar imagem
-                <input 
-                  id="plateImage" 
-                  type='file'
-                  onChange={e => setImage(e.target.value)} 
-                />
+                <label htmlFor="plateImageInput">
+                  <FiUpload size={20}/> Selecionar imagem
+                  <input 
+                    id="plateImageInput" 
+                    type="file"
+                    onChange={handleSelectImage}
+                  />   
+              </label>
+
               </div>
             </div>
+
+
+
             <div className="input-wrapper">
               <label htmlFor="plateName">Nome</label>
               <input 

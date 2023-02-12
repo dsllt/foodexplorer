@@ -10,7 +10,7 @@ const upload = multer(uploadConfig.MULTER);
 const mealsController = new MealsController();
 
 mealsRoutes.post('/', mealsController.create);
-mealsRoutes.delete('/:id', mealsController.delete);
+mealsRoutes.delete('/', mealsController.delete);
 mealsRoutes.get('/:id', mealsController.show);
 mealsRoutes.patch('/image', upload.single('image'), mealsController.update);
 

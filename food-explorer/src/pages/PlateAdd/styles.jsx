@@ -112,19 +112,30 @@ export const Form = styled.div`
     border: none;
     background: ${({theme}) => theme.COLORS.DARK_800};
     border-radius: 8px;
-    cursor: pointer;
+  
     display: flex;
-    gap: 8px;
+    height: 50px;
+    margin-top: 8px;
+
     font-family: 'Poppins';
     font-weight: 500;
     font-size: 14px;
     line-height: 24px;
     padding: 12px 32px;
-    height: 50px;
-    margin-top: 8px;
 
-    > input{
+    #plateImageInput {
       display: none;
+      cursor: pointer;
+    }
+
+    label{
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    > label, svg{
+      cursor: pointer;
     }
   }
 `

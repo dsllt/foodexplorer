@@ -10,7 +10,7 @@ class IngredientsController {
     return response.json();
   }
 
-  async show(request, response) {
+  async show(request, response) { 
     const { names } = request.body;
 
     // Get existing ingredients from database ordered by name
