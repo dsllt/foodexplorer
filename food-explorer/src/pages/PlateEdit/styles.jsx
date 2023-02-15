@@ -22,7 +22,7 @@ export const Main = styled.div`
     margin-right: 32px;
   }
 
-  .addOrderButton{
+  .updateOrderButton{
     background-color:${({theme}) => theme.COLORS.TOMATO_400};
     width: 175px;
     margin-bottom: 125px;

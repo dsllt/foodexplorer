@@ -9,7 +9,7 @@ import EditIcon from '../../assets/edit-icon.svg'
 import { useAuth } from "../../hooks/auth"
 import { useNavigate } from "react-router-dom"
 
-export function Card({ plateLink, plate, imgSrc, platePrice, plateDescription, favPlate, setNumOfPlates }){
+export function Card({ plateLink, plate, imgSrc, platePrice, plateDescription, favPlate, setNumOfPlates, plateCategory, plateId, plateIngredients }){
   const { user } = useAuth();
   const navigate = useNavigate();
   const [ numOfSamePlates, setNumOfSamePlates ] = useState(1);
@@ -35,7 +35,20 @@ export function Card({ plateLink, plate, imgSrc, platePrice, plateDescription, f
       <div className="favorite">
         <button >
           {user.isAdmin ? (
-            <img src={EditIcon} onClick={() => {navigate("/plateEdit")}}/>
+            <img 
+              src={EditIcon} 
+              onClick={() => {navigate("/plateEdit", { 
+                state: { 
+                  plate, 
+                  imgSrc, 
+                  platePrice, 
+                  plateDescription, 
+                  plateCategory, 
+                  plateId, 
+                  plateIngredients
+                } 
+              })}}
+            />
           ) : (
             !favPlate ? (<FiHeart size={30} />) : (<FiHeart size={30} style={{fill: 'white'}}/>)
           )}

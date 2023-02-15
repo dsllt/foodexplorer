@@ -6,8 +6,8 @@ import { api } from "../services/api";
 export const AuthContext = createContext({});
 
 function AuthProvider({children}) {
-  const [ data, setData ] = useState({});
-  const [ meal, setMeal ] = useState({});
+  const [ userData, setUserData ] = useState({});
+  const [ mealsData, setMealData ] = useState({});
 
   async function signIn({ email, password }) {
       try { 
@@ -18,7 +18,7 @@ function AuthProvider({children}) {
         localStorage.setItem("@foodexplorer:token", token)
       
         api.defaults.headers.common['Authorization']  = `Bearer ${token}`
-        setData({ user, token });
+        setUserData({ user, token });
 
       } catch (error) {
         if(error.message){
@@ -36,37 +36,44 @@ function AuthProvider({children}) {
     setData({});
   }
 
-  async function updateMeal({ meal }){
+
+  async function loadMeals(){
     try {
-      const response = await api.post("/meals", meal)
-      const { user, token } = response.data;
-      await api.get('/meals', meal)
+      const mealsResponse = await api.get("/meals")
+      const ingredientsResponse = await api.get("/ingredients")
+      
+      localStorage.setItem("@foodexplorer:meals", JSON.stringify(mealsResponse.data));
+      localStorage.setItem("@foodexplorer:ingredients", JSON.stringify(ingredientsResponse.data));
+      
+      const meals = localStorage.getItem("@foodexplorer:meals");
+      setMealData({ 
+        meals: JSON.parse(meals)
+      })
     } catch (error) {
-      if (error.response){
-        alert(error.response.data.message)
-      } else {
-        alert('Não foi possível atualziar o prato')
-      }
+      console.log(error)
     }
   }
 
   useEffect(() => {
     const token = localStorage.getItem("@foodexplorer:token");
     const user = localStorage.getItem("@foodexplorer:user");
+    const meals = localStorage.getItem("@foodexplorer:meals");
 
     if(token && user){
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
-      setData({ 
-        user: JSON.parse(user),
-        token
+      setUserData({ 
+        meals: JSON.parse(meals)
+      })
+      setMealData({ 
+        meals: JSON.parse(meals)
       })
     }
 
   }, [])
 
   return(
-    <AuthContext.Provider value={{ signIn, user: data.user, signOut, updateMeal }} >
+    <AuthContext.Provider value={{ signIn, user: userData.user, signOut, loadMeals, meals: mealsData.meals }} >
       {children}
     </AuthContext.Provider>
   )
