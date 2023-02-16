@@ -47,7 +47,9 @@ export function Home(){
 
         <Section title='Pratos principais'>
           <Hover slides={
-            meals.map((meal, index) => {
+            meals
+            .filter(meal => meal.category === 'refeicao')
+            .map((meal, index) => {
               const mealImage = `${api.defaults.baseURL}/files/${meal.image}`
               const mealLink = meal.name
                 .replace(/\w+/g, function(txt) {
@@ -74,7 +76,9 @@ export function Home(){
 
         <Section title='Sobremesas'>
           <Hover slides={
-            meals.map((meal, index) => {
+            meals
+            .filter(meal => meal.category === 'sobremesa')
+            .map((meal, index) => {
               const mealImage = `${api.defaults.baseURL}/files/${meal.image}`
               const mealLink = meal.name
                 .replace(/\w+/g, function(txt) {
@@ -101,7 +105,9 @@ export function Home(){
         </Section>
         <Section title='Bebidas'>
           <Hover slides={
-            meals.map((meal, index) => {
+            meals
+            .filter(meal => meal.category === 'bebida')
+            .map((meal, index) => {
               const mealImage = `${api.defaults.baseURL}/files/${meal.image}`
               const mealLink = meal.name
                 .replace(/\w+/g, function(txt) {
