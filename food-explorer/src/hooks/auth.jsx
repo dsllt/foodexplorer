@@ -7,6 +7,7 @@ export const AuthContext = createContext({});
 
 function AuthProvider({children}) {
   const [ data, setData ] = useState({});
+  const [ mealsData, setMealsData ] = useState({});
 
   async function signIn({ email, password }) {
       try { 
@@ -69,9 +70,36 @@ function AuthProvider({children}) {
       
       localStorage.setItem("@foodexplorer:meals", JSON.stringify(mealsResponse.data));
       localStorage.setItem("@foodexplorer:ingredients", JSON.stringify(ingredientsResponse.data));
+
+      const mealsData = localStorage.getItem("@foodexplorer:meals");
+
+      setMealsData({
+        meals: JSON.parse(mealsData),
+        ingredients: JSON.parse(localStorage.getItem("@foodexplorer:ingredients"))
+      })
     } catch (error) {
       console.log(error)
     }
+  }
+
+  async function updateMealsOnLocalStorage(){
+    const mealsResponse = await api.get("/meals")
+    const ingredientsResponse = await api.get("/ingredients")
+    
+    localStorage.setItem("@foodexplorer:meals", JSON.stringify(mealsResponse.data));
+    localStorage.setItem("@foodexplorer:ingredients", JSON.stringify(ingredientsResponse.data));
+
+    
+    const token = localStorage.getItem("@foodexplorer:token");
+    const user = localStorage.getItem("@foodexplorer:user");
+    const meals = localStorage.getItem("@foodexplorer:meals");
+    
+    setData({ 
+      user: JSON.parse(user),
+      token,
+      meals: JSON.parse(meals)
+    })
+
   }
 
   useEffect(() => {
@@ -92,7 +120,7 @@ function AuthProvider({children}) {
   }, [])
 
   return(
-    <AuthContext.Provider value={{ signIn, user: data.user, signOut, updateMeal, loadMeals, meals: data.meals }} >
+    <AuthContext.Provider value={{ signIn, user: data.user, signOut, updateMeal, loadMeals, meals: mealsData.meals ?? data.meals, ingredients: mealsData.ingredients }} >
       {children}
     </AuthContext.Provider>
   )

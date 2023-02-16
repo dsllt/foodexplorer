@@ -6,8 +6,9 @@ import { Button } from "../../components/Button";
 import { IngredientsInput } from "../../components/IngredientsInput";
 import { useState } from "react";
 import { api } from "../../services/api";
-import { useAuth } from "../../hooks/auth";
+import { useNavigate } from "react-router-dom";
 
+import { useAuth } from "../../hooks/auth";
 export function PlateAdd(){
   const [ ingredients, setIngredients ] = useState([])
   const [ newIngredient, setNewIngredient ] = useState("")
@@ -17,22 +18,18 @@ export function PlateAdd(){
   const [ price, setPrice ] = useState("")
   const [ description, setDescription ] = useState("")
   const [ category, setCategory ] = useState("")
-
-
+  const navigate = useNavigate();
+  const { updateMealsOnLocalStorage } = useAuth();
   async function handleAddPlate(){
       if (!name || !image || !ingredients || !price || !description || !category){
-        console.log('nome', name, )
-        console.log('imagem', image)
-        console.log('ingrediente', ingredients, )
-        console.log('preço', price)
-        console.log('descr',description)
-        console.log('cate', category)
           return alert("Preencha todos os campos");
         }
         
       api.post('/meals', { name, image, ingredients, price, description, category })
-      .then(() => {
+      .then(async () => {
           alert("Prato cadastrado com sucesso!");
+          
+          navigate("/");
           setIngredients([]);
           setImage(null);
           setName("");
