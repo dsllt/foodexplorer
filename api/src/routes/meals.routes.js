@@ -12,7 +12,7 @@ const mealsController = new MealsController();
 const imagesController = new ImagesController();
 
 mealsRoutes.post('/', mealsController.create);
-mealsRoutes.delete('/', mealsController.delete);
+mealsRoutes.delete('/:id', mealsController.delete);
 mealsRoutes.get('/', mealsController.show);
 mealsRoutes.put('/', mealsController.update);
 mealsRoutes.patch('/image', upload.single('image'), imagesController.update);

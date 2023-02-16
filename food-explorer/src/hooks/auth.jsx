@@ -6,8 +6,7 @@ import { api } from "../services/api";
 export const AuthContext = createContext({});
 
 function AuthProvider({children}) {
-  const [ userData, setUserData ] = useState({});
-  const [ mealsData, setMealData ] = useState({});
+  const [ data, setData ] = useState({});
 
   async function signIn({ email, password }) {
       try { 
@@ -18,7 +17,7 @@ function AuthProvider({children}) {
         localStorage.setItem("@foodexplorer:token", token)
       
         api.defaults.headers.common['Authorization']  = `Bearer ${token}`
-        setUserData({ user, token });
+        setData({ user, token });
 
       } catch (error) {
         if(error.message){
@@ -36,6 +35,32 @@ function AuthProvider({children}) {
     setData({});
   }
 
+  async function updateMeal({ meal }){
+    
+    if (!mealName || !image || !ingredients || !price || !description || !category){
+      return alert("Preencha todos os campos");
+    }
+  
+    api.put('/meals', { id: mealId, name: mealName, description, category, price, image, ingredients })
+    .then(() => {
+        alert("Prato atualizado com sucesso!");
+      } 
+    )
+    .catch(error => {
+      console.log(error);
+      if(error.response){
+        alert(error.response.data.message);
+      }else{
+        alert('Não foi possível cadastrar o prato.')
+      }
+    })
+    
+    const mealsResponse = await api.get("/meals")
+    const ingredientsResponse = await api.get("/ingredients")
+    
+    localStorage.setItem("@foodexplorer:meals", JSON.stringify(mealsResponse.data));
+    localStorage.setItem("@foodexplorer:ingredients", JSON.stringify(ingredientsResponse.data));
+  }
 
   async function loadMeals(){
     try {
@@ -44,11 +69,6 @@ function AuthProvider({children}) {
       
       localStorage.setItem("@foodexplorer:meals", JSON.stringify(mealsResponse.data));
       localStorage.setItem("@foodexplorer:ingredients", JSON.stringify(ingredientsResponse.data));
-      
-      const meals = localStorage.getItem("@foodexplorer:meals");
-      setMealData({ 
-        meals: JSON.parse(meals)
-      })
     } catch (error) {
       console.log(error)
     }
@@ -62,10 +82,9 @@ function AuthProvider({children}) {
     if(token && user){
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
-      setUserData({ 
-        meals: JSON.parse(meals)
-      })
-      setMealData({ 
+      setData({ 
+        user: JSON.parse(user),
+        token,
         meals: JSON.parse(meals)
       })
     }
@@ -73,7 +92,7 @@ function AuthProvider({children}) {
   }, [])
 
   return(
-    <AuthContext.Provider value={{ signIn, user: userData.user, signOut, loadMeals, meals: mealsData.meals }} >
+    <AuthContext.Provider value={{ signIn, user: data.user, signOut, updateMeal, loadMeals, meals: data.meals }} >
       {children}
     </AuthContext.Provider>
   )

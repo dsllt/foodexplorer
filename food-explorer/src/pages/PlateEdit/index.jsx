@@ -11,6 +11,7 @@ import { useAuth } from "../../hooks/auth";
 
 export function PlateEdit(){
   const { state } = useLocation();
+  const { loadMeals, meals } = useAuth();
 
   const [ mealId, setMealId ] = useState(state.plateId)
   const [ ingredients, setIngredients ] = useState([])
@@ -57,7 +58,7 @@ export function PlateEdit(){
       return alert("Preencha todos os campos");
     }
   
-    api.put('/meals', { id: mealId, name, description, category, price, image, ingredients })
+    await api.put('/meals', { id: mealId, name, description, category, price, image, ingredients })
     .then(() => {
         alert("Prato atualizado com sucesso!");
         navigate("/");
@@ -77,6 +78,29 @@ export function PlateEdit(){
     
     localStorage.setItem("@foodexplorer:meals", JSON.stringify(mealsResponse.data));
     localStorage.setItem("@foodexplorer:ingredients", JSON.stringify(ingredientsResponse.data));
+  }
+
+  async function handleDeleteMeal(){
+    const confirm = window.confirm('Deseja excluir este prato?');
+    const id = [mealId]
+
+    if (confirm){
+      await api.delete(`/meals/${id}`)
+      .then(() => {
+        loadMeals()
+        alert("Prato excluído!");
+        navigate("/");
+      } 
+    )
+    .catch(error => {
+      console.log(error);
+      if(error.response){
+        alert(error.response.data.message);
+      }else{
+        alert('Não foi possível excluir o prato.')
+      }
+    })
+    }
   }
 
   return(
@@ -164,7 +188,7 @@ export function PlateEdit(){
         </Form>
 
         <div>
-          <Button className='deleteOrderButton' text='Excluir prato' onClick={handleUpdateMeal}/>
+          <Button className='deleteOrderButton' text='Excluir prato' onClick={handleDeleteMeal}/>
           <Button className='updateOrderButton' text='Salvar alterações' onClick={handleUpdateMeal}/>
         </div>
       </Main>

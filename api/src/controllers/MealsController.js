@@ -23,12 +23,10 @@ class MealsController {
   }
 
   async delete(request, response){
-    const { ids } = request.body;
+    const { id } = request.params;
 
-    ids.map(async id => {
-      await knex('meals').where({ id }).delete();
-    })
-
+    await knex('meals').where({ id }).delete();
+   
     return response.json();
   }
 
