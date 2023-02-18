@@ -8,7 +8,7 @@ import { useAuth } from "../../hooks/auth"
 import { Link, useNavigate } from "react-router-dom"
 
 
-export function Header({isAdm, numOfPlates }){
+export function Header({isAdm, numOfPlates, ...rest }){
   const { signOut, user } = useAuth();
   const navigate = useNavigate();
   const item = 0
@@ -27,7 +27,7 @@ export function Header({isAdm, numOfPlates }){
               
 
           
-          <Input placeholder="Busque pelas opções de pratos" icon={FiSearch}/>
+          <Input placeholder="Busque pelas opções de pratos" icon={FiSearch} {...rest}/>
           <Button className='myOrderButton' icon={ReceiptIcon} text={`Pedidos (${numOfPlates})`} onClick={() => {navigate("/userOrders/1");}}
           />
 

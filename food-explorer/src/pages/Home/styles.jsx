@@ -16,7 +16,18 @@ export const Main = styled.div`
   max-width: 100vw;
   overflow-y: scroll;
 
+  .zeroRenderingCards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 140%;
+  }
 `
 
 
