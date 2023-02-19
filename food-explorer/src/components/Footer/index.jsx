@@ -7,9 +7,9 @@ export function Footer(){
     <Container>
       <Logo>
         <img src={LogoIcon} className='logoImg'/>
-        <text>food explorer</text>
+        <span>food explorer</span>
       </Logo>
-      <text>© 2023 - Todos os direitos reservados.</text>
+      <span>© 2023 - Todos os direitos reservados.</span>
     </Container>
   )
 }

@@ -45,9 +45,9 @@ export function Card({ plateLink, plate, imgSrc, platePrice, plateDescription, f
                   plateDescription, 
                   plateCategory, 
                   plateId, 
-                  plateIngredients
-                } 
-              })}}
+                  plateIngredients} 
+              }
+              )}}
             />
           ) : (
             !favPlate ? (<FiHeart size={30} />) : (<FiHeart size={30} style={{fill: 'white'}}/>)
@@ -57,7 +57,7 @@ export function Card({ plateLink, plate, imgSrc, platePrice, plateDescription, f
       <Main>
         <img src={imgSrc}/>
         <div className="title">
-          <Link to={`/plateReview/${plateLink}`}>{plate} </Link >
+          <Link to={`/plateReview/${plateLink}`} state={{plateId}}>{plate}</Link >
           <FiChevronRight size={16} strokeWidth= {5}/>
         </div>
         <p>{plateDescription}</p>
@@ -69,7 +69,7 @@ export function Card({ plateLink, plate, imgSrc, platePrice, plateDescription, f
           <div className="includeItem">
             <Quantity>
               <button type="button" onClick={decreaseNumOfSamePlates}><FiMinus size={20}/></button>
-              <text>{numOfSamePlates}</text>
+              <span>{numOfSamePlates}</span>
               <button type="button" onClick={increaseNumOfSamePlates}><FiPlus size={20}/></button>
             </Quantity>
             <Button text='incluir' onClick={()=>setNumOfPlates(handlenumOfTotalPlates)}/>

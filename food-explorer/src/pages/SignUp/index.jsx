@@ -41,7 +41,7 @@ export function SignUp(){
       <Logo>
         <img src={LogoIcon} className='logoImg'/>
         
-        <text>food explorer</text>
+        <span>food explorer</span>
       </Logo>
       <Form>
         <h1>Crie sua conta</h1>

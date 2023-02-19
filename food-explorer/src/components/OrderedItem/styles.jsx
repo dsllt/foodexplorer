@@ -13,7 +13,7 @@ export const Container = styled.div`
   }
 
   .leftContainers{
-    >text{
+    >span{
       font-family: 'Poppins';
       font-weight: 500;
       font-size: 20px;

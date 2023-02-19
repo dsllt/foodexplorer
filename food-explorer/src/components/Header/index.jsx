@@ -19,7 +19,7 @@ export function Header({isAdm, numOfPlates, ...rest }){
           <LeftLinks>
               <Link to={"/"} className='logoLinkHome'>
                 <img src={LogoIcon} />
-                <text>food explorer</text>
+                <span>food explorer</span>
               </Link>
 
               <Link to={`/favOrders/${user.id}`} className='userFavorites'> Meus favoritos </Link>
@@ -41,7 +41,7 @@ export function Header({isAdm, numOfPlates, ...rest }){
           <LogoText>
               <Link to={"/"} className='logoLinkHome'>
                 <img src={LogoIcon} className='logoImg'/>
-                <text>food explorer</text>
+                <span>food explorer</span>
               </Link>
               <span>admin</span>
           </LogoText>

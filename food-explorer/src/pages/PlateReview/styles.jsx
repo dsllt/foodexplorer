@@ -106,3 +106,15 @@ export const LinkPage = styled(Link)`
   flex-direction: row;
   align-items: center;
 `
+export const Quantity = styled.div`
+  align-items: center;
+  display: flex;
+  gap: 14px;
+
+  >button{
+    background: none;
+    border: none;
+    color: ${({theme}) => theme.COLORS.LIGHT_100};
+  }
+  
+`

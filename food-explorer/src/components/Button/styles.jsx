@@ -12,7 +12,7 @@ export const Container = styled.button`
   justify-content: center;
   padding: 12px 33px;
 
-  >text {
+  >span {
     font: ${({theme}) => theme.FONTS.POPPINGS_100_MEDIUM};
   }
 

@@ -59,7 +59,7 @@ export const Main = styled.div`
     }
   }
 
-  >text{
+  >span{
     font-size: 14px;
     line-height: 160%;
     width: 220px;

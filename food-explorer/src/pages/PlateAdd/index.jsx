@@ -79,7 +79,7 @@ export function PlateAdd(){
           <div className="inputLine">
 
             <div className="input-wrapper-minor">
-              <text>Imagem do prato</text>
+              <span>Imagem do prato</span>
               <div id="plateImage">
                 <label htmlFor="plateImageInput">
                   <FiUpload size={20}/> Selecionar imagem

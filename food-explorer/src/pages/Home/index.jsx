@@ -14,11 +14,11 @@ export function Home(){
   const [ search, setSearch ] = useState('');
   const [ numOfPlates, setNumOfPlates ] = useState(0);
   const [ numTotalOfPlates, setNumTotalOfPlates ] = useState(0);
-  const [ searchedMeals, setSearchedMeals ] = useState([]);
+  const [ searchedMeals, setSearchedMeals ] = useState(meals);
   const [ searchedIngredientInMeals, setSearchedIngredientInMeals ] = useState([]);
-  const [ numberOfMealCardsToRender , setNumberOfMealCardsToRender ] = useState('');
-  const [ numberOfDesertCardsToRender , setNumberOfDesertCardsToRender] = useState('');
-  const [ numberOfDrinkCardsToRender, setNumberOfDrinkCardsToRender] = useState('');
+  const [ numberOfMealCardsToRender , setNumberOfMealCardsToRender ] = useState(1);
+  const [ numberOfDesertCardsToRender , setNumberOfDesertCardsToRender] = useState(1);
+  const [ numberOfDrinkCardsToRender, setNumberOfDrinkCardsToRender] = useState(1);
 
   function handleIncludeItem(){
     setNumTotalOfPlates(numTotalOfPlates + numTotalOfPlates)
@@ -74,7 +74,7 @@ export function Home(){
     <Container>
       <Header  numOfPlates={numTotalOfPlates} onChange={e => {
         setSearch(e.target.value)
-        console.log(search)}}/>
+        }}/>
       <Main>
         <Title>
           <img src={TitleImg}/>
@@ -105,7 +105,7 @@ export function Home(){
                       imgSrc={mealImage} 
                       plateDescription={meal.description}
                       platePrice={meal.price}  
-                      plateCategory={ meal.category }
+                      plateCategory={ meal.category}
                       plateId={meal.id}
                       setNumOfPlates={setNumOfPlates}
                       />
@@ -180,6 +180,7 @@ export function Home(){
                       imgSrc={mealImage} 
                       plateDescription={meal.description}
                       platePrice={meal.price}  
+                      plateId={meal.id}
                       setNumOfPlates={setNumOfPlates}
                     />
                 )

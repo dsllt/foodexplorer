@@ -22,7 +22,7 @@ export function SignIn(){
     <Logo>
       <img src={LogoIcon} className='logoImg'/>
       
-      <text>food explorer</text>
+      <span>food explorer</span>
     </Logo>
     <Form>
       <h1>Faça login</h1>

@@ -6,9 +6,9 @@ export function OrderedItem({imgSrc, quantity, plate, price}){
     <Container>
       <img src={imgSrc}/>
       <div className="leftContainers">
-          <text>
+          <span>
             {quantity} x {plate} <span>{price}</span>
-          </text>
+          </span>
         <ButtonText title='Excluir' />
       </div>
     </Container>
