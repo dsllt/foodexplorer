@@ -66,7 +66,7 @@ export function PlateReview(){
               })}
           </Ingredients>
           {user.isAdmin ? (
-            <Button text='editar prato' />
+            <Button className="admButton" text='editar prato' />
           ) : (
             <Sale>
               <div className="includeItem">
