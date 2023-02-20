@@ -1,15 +1,31 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  @media(max-width: 600px){
+    flex-direction: column; 
+    gap: 0;
+    margin: auto;
+  }
+
   align-items: center;
   display: flex;
   flex-direction: row;
   gap: 306px;
   justify-content: center;
-  margin-top: 90px;
+  height: 100vh;
 `
 
 export const Logo = styled.div`
+  @media(max-width: 600px){
+    font-size: 36px;
+    line-height: 44px;
+
+    .logoImg{
+      width: 43px;
+      height: 43px;
+    }
+  }
+
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -27,11 +43,21 @@ export const Logo = styled.div`
   }
 `
 export const Form = styled.form`
+  @media(max-width: 600px){
+    background-color: transparent;
+    padding: 50px;
+    width: 100vw;
+
+    .formBoxTitle{
+      display: none;
+    }
+  }
+  
   background-color: ${({theme}) => theme.COLORS.DARK_700};
   border-radius: 16px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-items: center;
   align-items: center;
   padding: 64px;
 
@@ -45,14 +71,13 @@ export const Form = styled.form`
     margin-bottom: 8px;
   }
 
-
   >Button{
     margin-top: 32px;
     width: 100%;
     justify-content: space-around;
   }
 
-  a{
+  >a {
     color: ${({theme}) => theme.COLORS.LIGHT_100};
     margin-top: 32px;
 
@@ -61,5 +86,4 @@ export const Form = styled.form`
     font-size: 14px;
     line-height: 24px;
   }
-
 `

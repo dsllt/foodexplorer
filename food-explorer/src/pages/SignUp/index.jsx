@@ -36,7 +36,6 @@ export function SignUp(){
   }
 
   return(
-
     <Container>
       <Logo>
         <img src={LogoIcon} className='logoImg'/>
@@ -44,25 +43,35 @@ export function SignUp(){
         <span>food explorer</span>
       </Logo>
       <Form>
-        <h1>Crie sua conta</h1>
+        <h1 className="formBoxTitle">Crie sua conta</h1>
 
         <label htmlFor='name'>Seu nome</label>
         <Input 
           placeholder='Exemplo: Maria da Silva' 
-          bgColor={'transparent'} 
-          borderColor={'red'} 
-          border={'solid'} 
-          borderWidth={1} 
           id='name' 
           type="text" 
+          justifyContent= 'flex-start'
           onChange={e => setName(e.target.value)}
         />
 
         <label htmlFor="email">Email</label>
-        <Input placeholder='Exemplo: exemplo@exemplo.com.br' bgColor={'transparent'} borderColor={'red'} border={'solid'} borderWidth={1} id='email' type="email" onChange={e => setEmail(e.target.value)}/>
+        <Input 
+          placeholder='Exemplo: exemplo@exemplo.com.br' 
+          id='email' 
+          type="email" 
+          justifyContent= 'flex-start'
+          inputWidth={250}
+          onChange={e => setEmail(e.target.value)}
+        />
 
         <label htmlFor="password">Senha</label>
-        <Input placeholder='No mínimo 6 caracteres' bgColor={'transparent'} borderColor={'red'} border={'solid'} borderWidth={1} id='password' type="password" onChange={e => setPassword(e.target.value)}/>
+        <Input 
+          placeholder='No mínimo 6 caracteres'
+          id='password' 
+          type="password" 
+          justifyContent= 'flex-start'
+          onChange={e => setPassword(e.target.value)}
+        />
 
         <Button text='Criar conta' type="submit" onClick={handleSignUp}/>
         <Link to='/'>

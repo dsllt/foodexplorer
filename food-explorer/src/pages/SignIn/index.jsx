@@ -25,13 +25,12 @@ export function SignIn(){
       <span>food explorer</span>
     </Logo>
     <Form>
-      <h1>Faça login</h1>
+      <h1 className="formBoxTitle">Faça login</h1>
 
       <label htmlFor="email">Email</label>
       <Input 
         placeholder='Exemplo: exemplo@exemplo.com.br' 
-        bgColor={'transparent'} 
-        borderColor={'red'} border={'solid'} borderWidth={1} id='email' 
+        id='email' 
         type="email"
         justifyContent= 'flex-start'
         onChange={e => setEmail(e.target.value)}
@@ -40,9 +39,6 @@ export function SignIn(){
       <label htmlFor="password">Senha</label>
       <Input 
         placeholder='No mínimo 6 caracteres' 
-        bgColor={'transparent'} 
-        borderColor={'red'} border={'solid'} 
-        borderWidth={1} 
         id='password' 
         type="password" 
         justifyContent= 'flex-start'
