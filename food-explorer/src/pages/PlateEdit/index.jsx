@@ -1,4 +1,4 @@
-import { Container, Main, Form } from "./styles";
+import { Container, Main, Form, LinkPage } from "./styles";
 import { FiUpload } from "react-icons/fi"
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import { api } from "../../services/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
+import { FiChevronLeft } from 'react-icons/fi'
 
 export function PlateEdit(){
   const { state } = useLocation();
@@ -106,6 +107,9 @@ export function PlateEdit(){
   return(
     <Container>
       <Header />
+      <LinkPage to={'/'} >
+        <FiChevronLeft /> voltar
+      </LinkPage>
 
       <Main>
         <h1>Editar prato</h1>
@@ -187,7 +191,7 @@ export function PlateEdit(){
 
         </Form>
 
-        <div>
+        <div className="modificationButtons">
           <Button className='deleteOrderButton' text='Excluir prato' onClick={handleDeleteMeal}/>
           <Button className='updateOrderButton' text='Salvar alterações' onClick={handleUpdateMeal}/>
         </div>

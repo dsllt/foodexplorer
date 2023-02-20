@@ -139,6 +139,7 @@ export const LinkPage = styled(Link)`
   flex-direction: row;
   align-items: center;
 `
+
 export const Quantity = styled.div`
   align-items: center;
   display: flex;
