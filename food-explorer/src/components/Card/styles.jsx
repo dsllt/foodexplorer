@@ -17,6 +17,15 @@ export const Container = styled.div`
       }
   }
 
+  @media(max-width: 600px){
+    width: 210px;
+    height: 292px;
+    .favorite{
+      >button{
+        margin: 20px 160px;
+      }
+    }
+  }
 `
 
 export const Main = styled.div`
@@ -65,10 +74,37 @@ export const Main = styled.div`
     width: 220px;
   }
 
+  >h2{ 
+      color: ${({theme}) => theme.COLORS.CAKE_100};
+    }
+
   .includeItem{
     display: flex;
     flex-direction: row;
     gap: 16px;
+  }
+  @media (max-width: 600px) {
+    padding-top: 70px;
+    >img{
+      width: 88px;
+      height: 88px;   
+    }
+    >h2{
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 100%;
+      color: ${({theme}) => theme.COLORS.CAKE_100};
+    }
+    >p{
+      display: none;
+    }
+    .title{
+      >a{
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+      }
+    }
   }
 `
 

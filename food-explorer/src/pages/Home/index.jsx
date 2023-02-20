@@ -6,6 +6,7 @@ import { Section } from "../../components/Section"
 import { Card } from "../../components/Card"
 import { Hover } from "../../components/Hover"
 import TitleImg from '../../assets/title-picture.png'
+import TitleImgMobile from '../../assets/title-picture-mobile.png'
 import { api } from '../../services/api'
 import { useAuth } from "../../hooks/auth";
 
@@ -63,7 +64,6 @@ export function Home(){
 
   useEffect(() => {
     loadMeals()
-    
   }, []);
 
   useEffect(()=>{
@@ -72,12 +72,16 @@ export function Home(){
   
   return(
     <Container>
-      <Header  numOfPlates={numTotalOfPlates} onChange={e => {
-        setSearch(e.target.value)
-        }}/>
+      <Header  
+        numOfPlates={numTotalOfPlates} 
+        onChange={e => {setSearch(e.target.value)}}
+      />
       <Main>
         <Title>
-          <img src={TitleImg}/>
+          <img className='screenPicture' src={TitleImg}/>
+           
+          <img className='mobilePicture' src={TitleImgMobile}/>
+
           <div className="titleText">
             <h1>Sabores inigualáveis</h1>
             <h2>Sinta o cuidado do preparo com ingredientes selecionados</h2>

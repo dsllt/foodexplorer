@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
+import { Container as InputContainer } from '../Input/styles';
 import styled from "styled-components";
 
 export const Container = styled.div`
+  @media (max-width: 600px){
+    padding: 56px 28px 24px 28px;
+  justify-content: center;
+  }
   align-items: center;
   background-color: ${({theme}) => theme.COLORS.DARK_700};
   display: flex;
@@ -61,9 +66,25 @@ export const LeftLinks = styled.div`
   
 `
 export const LogoText = styled.div`
+  @media(max-width: 600px){
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    .logoLinkHome{
+      >span{
+        font-size: 22px;
+        line-height: 25px;
+      }
+    }
+    .admTag{
+      align-self: center;
+    }
+  }
+
   display: flex;
   flex-direction: column;
-  .logoLinkHome{
+
+  .logoLinkHome{  
     font-size: 26px;
     font-weight: 700;
     color: ${({theme}) => theme.COLORS.LIGHT_100};
@@ -71,10 +92,9 @@ export const LogoText = styled.div`
     margin: 0;
     display: flex;
     align-items: center;
-
     >img{
-    filter: invert(24%) sepia(96%) saturate(600%) hue-rotate(153deg) brightness(100%) contrast(96%);
-    margin-right: 12px;
+      filter: invert(24%) sepia(96%) saturate(600%) hue-rotate(153deg) brightness(100%) contrast(96%);
+      margin-right: 12px;
     }
   }
   >span{
@@ -88,6 +108,9 @@ export const LogoText = styled.div`
 `
 
 export const Logout = styled.button`
+  @media (max-width: 600px){
+    display: none;
+  }
   background: none;
   border: none;
   margin-left: 32px;
@@ -103,10 +126,29 @@ export const ContainerAdm = styled.div`
   font-size: 16px;
   flex-direction: row;
   width: 100%;
-  justify-content: space-between;
+  justify-content: flex-start;
 
   .newPlateButton{
     width: 216px;
+  }
+  >svg{
+    display: none;
+  }
+
+  @media (max-width: 600px){
+    width: 100vw;
+    ${InputContainer}{
+        display: none;
+    }
+    .newPlateButton{
+      display: none;
+    }
+    >svg{
+      display: block;
+      width: 24px;
+      height: 18px;
+      margin-right: 84px;
+    }
   }
 
 `

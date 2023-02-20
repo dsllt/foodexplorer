@@ -61,7 +61,7 @@ export function Card({ plateLink, plate, imgSrc, platePrice, plateDescription, f
           <FiChevronRight size={16} strokeWidth= {5}/>
         </div>
         <p>{plateDescription}</p>
-        <h2>{platePrice}</h2>
+        <h2> R$ {platePrice}</h2>
 
         {user.isAdmin ? (
           <></>
