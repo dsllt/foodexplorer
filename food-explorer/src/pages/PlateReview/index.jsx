@@ -99,7 +99,7 @@ export function PlateReview(){
                   <button type="button" onClick={increaseNumOfSamePlates}><FiPlus size={20}/></button>
                 </Quantity>
               </div>
-                <Button text={`incluir ∙ ${currentMeal.price}`} onClick={()=>setNumOfPlates(handlenumOfTotalPlates)}/>
+                <Button text={`incluir ∙ R$ ${currentMeal.price}`} onClick={()=>setNumOfPlates(handlenumOfTotalPlates)}/>
             </Sale>
           )}
         </Description>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { createContext, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { api } from "../services/api";
 
 export const AuthContext = createContext({});
@@ -8,6 +9,7 @@ export const AuthContext = createContext({});
 function AuthProvider({children}) {
   const [ data, setData ] = useState({});
   const [ mealsData, setMealsData ] = useState({});
+  
 
   async function signIn({ email, password }) {
       try { 

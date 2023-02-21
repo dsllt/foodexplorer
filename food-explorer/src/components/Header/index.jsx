@@ -11,11 +11,13 @@ import { Link, useNavigate } from "react-router-dom"
 export function Header({isAdm, numOfPlates, ...rest }){
   const { signOut, user } = useAuth();
   const navigate = useNavigate();
-  const item = 0
   return (
     <Container>
       {user.isAdmin == 0 ? (
         <ContainerUser>
+          <Link to={"/navigationMenu"} className='navigationMenu'>
+            <FiMenu/>
+          </Link>
           <LeftLinks>
               <Link to={"/"} className='logoLinkHome'>
                 <img src={LogoIcon} />
@@ -26,8 +28,14 @@ export function Header({isAdm, numOfPlates, ...rest }){
           </LeftLinks>
                         
           <Input placeholder="Busque pelas opções de pratos" icon={FiSearch} {...rest}/>
+
           <Button className='myOrderButton' icon={ReceiptIcon} text={`Pedidos (${numOfPlates})`} onClick={() => {navigate("/userOrders/1");}}
           />
+
+          <div className="myOrderButtonMobile"  onClick={() => navigate("/userOrders/1")}> 
+            <div className="numOfPlates">{numOfPlates}</div>
+            <img src={ReceiptIcon}/>
+          </div>
 
           <Logout onClick={signOut}>
             <FiLogOut size={32}/>

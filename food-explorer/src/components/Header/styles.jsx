@@ -30,6 +30,58 @@ export const ContainerUser = styled.div`
     width: 216px;
     white-space: nowrap;
   }
+  .navigationMenu{ 
+    display: none;
+  }
+  .myOrderButtonMobile{ 
+    display: none;
+  }
+  @media (max-width: 600px){
+    width: 100vw;
+    justify-content: space-between;
+    ${InputContainer}{
+        display: none;
+    }
+    .newPlateButton{
+      display: none;
+    }
+    .navigationMenu{
+      color: ${({theme}) => theme.COLORS.LIGHT_100};
+      display: block;
+      >svg{
+        width: 24px;
+        height: 18px;
+      }
+    }
+    .userFavorites{
+      display: none;
+    }
+    .myOrderButton{
+      display: none;
+    }
+    .myOrderButtonMobile{
+      display: block;
+      >img{
+        width: 32px;
+        height: 32px;
+      }
+      .numOfPlates{
+        font-size: 14px;
+        line-height: 24px;
+        background-color: ${({theme}) => theme.COLORS.TOMATO_100};
+        border-radius: 99px;
+        width: 20px;
+        height: 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        right: 20px;
+        top: 50px;
+      }
+    }
+  }
 `
 
 export const LeftLinks = styled.div`

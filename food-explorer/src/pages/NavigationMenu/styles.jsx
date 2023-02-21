@@ -34,11 +34,11 @@ export const Header = styled.div`
 export const Main = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 150px 28px;
+  padding: 50px 28px;
   justify-content: center;
   width: 100%;
   position: fixed;
-  z-index: -1;
+  top: 100px;
 
   .inputSearch{
     max-width: 100vw;

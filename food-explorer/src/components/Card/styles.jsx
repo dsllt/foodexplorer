@@ -84,10 +84,15 @@ export const Main = styled.div`
     gap: 16px;
   }
   @media (max-width: 600px) {
-    padding-top: 70px;
-    >img{
+    .imgUser, .imgAdm{
       width: 88px;
       height: 88px;   
+    }
+    .imgAdm{
+      margin-top: 70px;
+    }
+    .imgUser{
+      margin-top: 0px;
     }
     >h2{
       font-weight: 400;
@@ -105,6 +110,17 @@ export const Main = styled.div`
         line-height: 24px;
       }
     }
+    .includeItem{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .includePlateButton{
+        width: 162px;
+        height: 32px;
+      }
+    }
   }
 `
 
@@ -117,6 +133,10 @@ export const Quantity = styled.div`
     background: none;
     border: none;
     color: ${({theme}) => theme.COLORS.LIGHT_100};
+  }
+
+  @media(max-width: 600px){
+    justify-content: center;
   }
   
 `

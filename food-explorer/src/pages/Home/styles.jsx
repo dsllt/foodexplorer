@@ -78,7 +78,8 @@ export const Title = styled.div`
   }
 
   @media(max-width: 600px){
-    width: 376px;
+    align-items: center;
+    width: 90vw;
     height: 120px;
     margin-top: 44px;
    .titleText{
@@ -99,10 +100,9 @@ export const Title = styled.div`
      }
      .mobilePicture{
         display: block;
-        bottom: 15px;
         width: 191px;
         height: 149px;
-        margin: -50px -20px;
+        margin: 0 -45px 30px;
         position: relative;
         transform: matrix(1, 0, 0, 1, 0, 0);
      }
