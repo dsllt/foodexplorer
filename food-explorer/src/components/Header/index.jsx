@@ -36,7 +36,10 @@ export function Header({isAdm, numOfPlates, ...rest }){
         </ContainerUser>
        ) : (
         <ContainerAdm>
-          <FiMenu/>
+          <Link to={"/navigationMenu"} className='navigationMenu'>
+            <FiMenu/>
+          </Link>
+          
           <LogoText>
               <Link to={"/"} className='logoLinkHome'>
                 <img src={LogoIcon} className='logoImg'/>

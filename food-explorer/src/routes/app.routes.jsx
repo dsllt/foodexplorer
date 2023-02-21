@@ -8,11 +8,12 @@ import { PlateEdit } from '../pages/PlateEdit';
 import { PlateReview } from '../pages/PlateReview';
 import { UserOrders } from '../pages/UserOrders';
 import { UserOrdersAdm } from '../pages/UserOrdersAdm';
+import { NavigationMenu } from '../pages/NavigationMenu';
+
 
 export function AppRoutes() {
   return(
     <Routes>
-      <Route path='/' element={<Home />} />
       <Route path='/payment/:id' element={<Payment />} />
       <Route path='/plateAdd' element={<PlateAdd />} />
       <Route path='/plateEdit' element={<PlateEdit/>} />
@@ -20,6 +21,8 @@ export function AppRoutes() {
       <Route path='/userOrders/:id' element={<UserOrders />} />
       <Route path='/userOrdersAdm' element={<UserOrdersAdm />} />
       <Route path='/favOrders/:id' element={<FavPlates />} />
+      <Route path='/navigationMenu' element={<NavigationMenu />} />
+      <Route path='/' element={<Home />} />
     </Routes>
   )
 }

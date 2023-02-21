@@ -131,7 +131,8 @@ export const ContainerAdm = styled.div`
   .newPlateButton{
     width: 216px;
   }
-  >svg{
+  
+  .navigationMenu{
     display: none;
   }
 
@@ -143,11 +144,15 @@ export const ContainerAdm = styled.div`
     .newPlateButton{
       display: none;
     }
-    >svg{
+    .navigationMenu{
+
+      color: ${({theme}) => theme.COLORS.LIGHT_100};
       display: block;
-      width: 24px;
-      height: 18px;
       margin-right: 84px;
+      >svg{
+        width: 24px;
+        height: 18px;
+      }
     }
   }
 
