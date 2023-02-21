@@ -1,5 +1,5 @@
-import { Container, Main, Form } from "./styles";
-import { FiUpload } from "react-icons/fi"
+import { Container, Main, Form, LinkPage } from "./styles";
+import { FiUpload, FiChevronLeft } from "react-icons/fi"
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { Button } from "../../components/Button";
@@ -72,6 +72,9 @@ export function PlateAdd(){
   return(
     <Container>
       <Header />
+      <LinkPage to={'/'} >
+        <FiChevronLeft /> voltar
+      </LinkPage>
 
       <Main>
         <h1>Adicionar prato</h1>
@@ -159,7 +162,7 @@ export function PlateAdd(){
 
         </Form>
 
-        <div>
+        <div className="buttonDiv">
           <Button className='addOrderButton' text='Salvar alterações' onClick={handleAddPlate}/>
         </div>
       </Main>

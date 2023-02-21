@@ -1,5 +1,5 @@
 import { Container, Main, Form, LinkPage } from "./styles";
-import { FiUpload } from "react-icons/fi"
+import { FiUpload, FiChevronLeft } from "react-icons/fi"
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { Button } from "../../components/Button";
@@ -8,7 +8,6 @@ import { useState, useEffect } from "react";
 import { api } from "../../services/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
-import { FiChevronLeft } from 'react-icons/fi'
 
 export function PlateEdit(){
   const { state } = useLocation();
