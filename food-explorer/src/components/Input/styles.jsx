@@ -1,14 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  @media(max-width: 600px){
-    background-color: ${({theme}) => theme.COLORS.DARK_900};
-    border: none;
-  }
-
-  background-color: transparent;
+  background-color: ${({theme}) => theme.COLORS.DARK_900};
   border-radius: 10px;
-  border: 1px solid;
   display: flex;
   align-items: center;
   justify-items: center;

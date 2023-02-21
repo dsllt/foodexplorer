@@ -3,10 +3,6 @@ import { Container as InputContainer } from '../Input/styles';
 import styled from "styled-components";
 
 export const Container = styled.div`
-  @media (max-width: 600px){
-    padding: 56px 28px 24px 28px;
-  justify-content: center;
-  }
   align-items: center;
   background-color: ${({theme}) => theme.COLORS.DARK_700};
   display: flex;
@@ -15,6 +11,11 @@ export const Container = styled.div`
   justify-content: space-between;
   padding: 28px 123px;
   width: 100%;
+
+  @media (max-width: 600px){
+    padding: 56px 28px 24px 28px;
+  justify-content: center;
+  }
 `
 
 export const ContainerUser = styled.div`

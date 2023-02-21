@@ -73,8 +73,13 @@ export function Home(){
   return(
     <Container>
       <Header  
-        numOfPlates={numTotalOfPlates} 
-        onChange={e => {setSearch(e.target.value)}}
+        numOfPlates={numTotalOfPlates}
+        onChangeInput={e => console.log(e.target.value)}
+        onChange={e => {
+          // setSearch(e.target.value); 
+          // console.log(search);
+          console.log(e.target.value)
+        }}
       />
       <Main>
         <Title>
@@ -90,7 +95,7 @@ export function Home(){
 
         <Section title='Pratos principais'>
           {
-            numberOfMealCardsToRender != 0 ? (
+            (numberOfMealCardsToRender != 0 && searchedMeals) ? (
               <Hover slides={
                 searchedMeals
                 .filter(meal => meal.category === 'refeicao')
@@ -126,7 +131,7 @@ export function Home(){
 
         <Section title='Sobremesas'>
         {
-          numberOfDesertCardsToRender != 0 ? (
+          (numberOfDesertCardsToRender != 0 && searchedMeals)? (
             <Hover slides={
             searchedMeals
             .filter(meal => meal.category === 'sobremesa')
@@ -164,7 +169,7 @@ export function Home(){
 
         <Section title='Bebidas'>
           {
-          numberOfDrinkCardsToRender != 0 ? (
+          (numberOfDrinkCardsToRender != 0 && searchedMeals) ? (
             <Hover slides={
               searchedMeals
               .filter(meal => meal.category === 'bebida')

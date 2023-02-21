@@ -1,10 +1,10 @@
 import { Container } from "./styles";
 
-export function Input({icon: Icon, bgColor,borderColor,border, borderWidth,inputWidth, justifyContent,  ...rest}){
+export function Input({icon: Icon, inputWidth, justifyContent, onChangeInput, ...rest}){
   return(
-    <Container style={{ borderWidth:borderWidth, justifyContent:justifyContent }} >
+    <Container style={{ justifyContent:justifyContent }} >
       {Icon && <Icon size={24}/>}
-      <input width={inputWidth ?? '100%'} { ...rest} />
+      <input width={inputWidth ?? '100%'} onChange={onChangeInput} { ...rest} />
     </Container>  
   )
 }
