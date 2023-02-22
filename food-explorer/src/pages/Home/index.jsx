@@ -9,9 +9,12 @@ import TitleImg from '../../assets/title-picture.png'
 import TitleImgMobile from '../../assets/title-picture-mobile.png'
 import { api } from '../../services/api'
 import { useAuth } from "../../hooks/auth";
+import { NavigationMenu } from "../NavigationMenu"
+
 
 export function Home(){
   const { loadMeals, meals, ingredients } = useAuth();
+  
   const [ search, setSearch ] = useState('');
   const [ numOfPlates, setNumOfPlates ] = useState(0);
   const [ numTotalOfPlates, setNumTotalOfPlates ] = useState(0);
@@ -20,6 +23,8 @@ export function Home(){
   const [ numberOfMealCardsToRender , setNumberOfMealCardsToRender ] = useState(1);
   const [ numberOfDesertCardsToRender , setNumberOfDesertCardsToRender] = useState(1);
   const [ numberOfDrinkCardsToRender, setNumberOfDrinkCardsToRender] = useState(1);
+  const [ openMenuMobile, setOpenMenuMobile ] = useState(false);
+ 
 
   function handleIncludeItem(){
     setNumTotalOfPlates(numTotalOfPlates + numTotalOfPlates)
@@ -70,12 +75,26 @@ export function Home(){
   useEffect(()=>{
     setNumTotalOfPlates(numOfPlates)
   },[numOfPlates]);
+
+  function handleOpenMenuMobile(){
+    setOpenMenuMobile(true);
+  }
+  function handleCloseMenuMobile(){
+    setOpenMenuMobile(false);
+  }
   
   return(
-    <Container>
-      <Header  numOfPlates={numTotalOfPlates} onChange={e => {
-        setSearch(e.target.value)
-        }}/>
+    <>
+    {openMenuMobile ? (
+      <NavigationMenu handleCloseMenuMobile={handleCloseMenuMobile} onChange={e=>setSearch(e.target.value)} />
+    ):(
+
+      <Container>
+      <Header 
+        numOfPlates={numTotalOfPlates} 
+        onChange={e => {setSearch(e.target.value)}}
+        handleOpenMenuMobile = {handleOpenMenuMobile}
+      />
       <Main>
         <Title>
           <img className='screenPicture' src={TitleImg}/>
@@ -198,5 +217,7 @@ export function Home(){
       </Main>
       <Footer />
     </Container>
+    )}
+    </>
   )
 }

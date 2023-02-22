@@ -6,11 +6,13 @@ import { Button } from "../Button"
 import { FiSearch, FiLogOut, FiMenu } from 'react-icons/fi'
 import { useAuth } from "../../hooks/auth"
 import { Link, useNavigate } from "react-router-dom"
+import { useState } from "react"
 
 
-export function Header({isAdm, numOfPlates, ...rest }){
+export function Header({isAdm, numOfPlates, handleOpenMenuMobile,  ...rest }){
   const { signOut, user } = useAuth();
   const navigate = useNavigate();
+
   return (
     <Container>
       {user.isAdmin == 0 ? (
@@ -44,7 +46,10 @@ export function Header({isAdm, numOfPlates, ...rest }){
         </ContainerUser>
        ) : (
         <ContainerAdm>
-          <Link to={"/navigationMenu"} className='navigationMenu'>
+          <Link 
+            className='navigationMenu' 
+            onClick={handleOpenMenuMobile}
+          >
             <FiMenu/>
           </Link>
           

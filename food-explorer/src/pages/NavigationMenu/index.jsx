@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Container, Main, Header, Buttons, LinkButton} from "./styles";
 import { FiSearch, FiX } from "react-icons/fi"
 import { Footer } from "../../components/Footer";
@@ -5,22 +6,24 @@ import { Input } from "../../components/Input";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/auth"
 
-export function NavigationMenu(){
+export function NavigationMenu({handleCloseMenuMobile, ...rest}){
   const { signOut, user } = useAuth();
 
   return(
     <Container>
       <Header>
-        <Link to={-1} >
+        <Link 
+          onClick={handleCloseMenuMobile}
+        >
           <FiX />
-        </Link>
+        </Link> 
         <h1>Menu</h1>
         
       </Header>
 
       <Main>
         <div className="inputSearch">
-          <Input  placeholder="Busque pelas opções de pratos" icon={FiSearch} />
+          <Input  placeholder="Busque pelas opções de pratos" icon={FiSearch}  {...rest}/>
         </div>
         
         <Buttons>
