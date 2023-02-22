@@ -9,7 +9,7 @@ import TitleImg from '../../assets/title-picture.png'
 import TitleImgMobile from '../../assets/title-picture-mobile.png'
 import { api } from '../../services/api'
 import { useAuth } from "../../hooks/auth";
-import { NavigationMenu } from "../NavigationMenu"
+import { NavigationMenu } from "../../components/NavigationMenu"
 
 
 export function Home(){
