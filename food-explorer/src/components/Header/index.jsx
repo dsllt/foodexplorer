@@ -45,7 +45,7 @@ export function Header({isAdm, numOfPlates, ...rest }){
               </Link>
               <span>admin</span>
           </LogoText>
-          <Input placeholder="Busque pelas opções de pratos" icon={FiSearch}/>
+          <Input placeholder="Busque pelas opções de pratos" icon={FiSearch} {...rest}/>
           <Button className='newPlateButton' text={`Novo prato`} onClick={() => {navigate("/plateAdd");}}/>
 
           <Logout onClick={signOut}>
