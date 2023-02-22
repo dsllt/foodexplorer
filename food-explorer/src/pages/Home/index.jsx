@@ -64,6 +64,7 @@ export function Home(){
 
   useEffect(() => {
     loadMeals()
+    
   }, []);
 
   useEffect(()=>{
@@ -72,30 +73,22 @@ export function Home(){
   
   return(
     <Container>
-      <Header  
-        numOfPlates={numTotalOfPlates}
-        onChangeInput={e => console.log(e.target.value)}
-        onChange={e => {
-          // setSearch(e.target.value); 
-          // console.log(search);
-          console.log(e.target.value)
-        }}
-      />
+      <Header  numOfPlates={numTotalOfPlates} onChange={e => {
+        setSearch(e.target.value)
+        }}/>
       <Main>
         <Title>
           <img className='screenPicture' src={TitleImg}/>
-           
           <img className='mobilePicture' src={TitleImgMobile}/>
-
           <div className="titleText">
             <h1>Sabores inigualáveis</h1>
             <h2>Sinta o cuidado do preparo com ingredientes selecionados</h2>
           </div>
         </Title>
 
-        <Section title='Pratos principais'>
+        <Section className="mainPlates" title='Pratos principais'>
           {
-            (numberOfMealCardsToRender != 0 && searchedMeals) ? (
+            numberOfMealCardsToRender != 0 ? (
               <Hover slides={
                 searchedMeals
                 .filter(meal => meal.category === 'refeicao')
@@ -131,7 +124,7 @@ export function Home(){
 
         <Section title='Sobremesas'>
         {
-          (numberOfDesertCardsToRender != 0 && searchedMeals)? (
+          numberOfDesertCardsToRender != 0 ? (
             <Hover slides={
             searchedMeals
             .filter(meal => meal.category === 'sobremesa')
@@ -169,7 +162,7 @@ export function Home(){
 
         <Section title='Bebidas'>
           {
-          (numberOfDrinkCardsToRender != 0 && searchedMeals) ? (
+          numberOfDrinkCardsToRender != 0 ? (
             <Hover slides={
               searchedMeals
               .filter(meal => meal.category === 'bebida')
