@@ -34,7 +34,7 @@ export const Main = styled.div`
   }
 
   @media(max-width: 600px){
-    padding: 24px 0 24px 24px;
+    padding: 24px 18px;
     .zeroRenderingCards{
       font-size: 12px;
     }
