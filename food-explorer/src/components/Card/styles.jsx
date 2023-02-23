@@ -17,6 +17,15 @@ export const Container = styled.div`
       }
   }
 
+  @media(max-width: 600px){
+    width: 210px;
+    height: 292px;
+    .favorite{
+      >button{
+        margin: 20px 160px;
+      }
+    }
+  }
 `
 
 export const Main = styled.div`
@@ -65,10 +74,53 @@ export const Main = styled.div`
     width: 220px;
   }
 
+  >h2{ 
+      color: ${({theme}) => theme.COLORS.CAKE_100};
+    }
+
   .includeItem{
     display: flex;
     flex-direction: row;
     gap: 16px;
+  }
+  @media (max-width: 600px) {
+    .imgUser, .imgAdm{
+      width: 88px;
+      height: 88px;   
+    }
+    .imgAdm{
+      margin-top: 70px;
+    }
+    .imgUser{
+      margin-top: 0px;
+    }
+    >h2{
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 100%;
+      color: ${({theme}) => theme.COLORS.CAKE_100};
+    }
+    >p{
+      display: none;
+    }
+    .title{
+      >a{
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+      }
+    }
+    .includeItem{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .includePlateButton{
+        width: 162px;
+        height: 32px;
+      }
+    }
   }
 `
 
@@ -81,6 +133,10 @@ export const Quantity = styled.div`
     background: none;
     border: none;
     color: ${({theme}) => theme.COLORS.LIGHT_100};
+  }
+
+  @media(max-width: 600px){
+    justify-content: center;
   }
   
 `

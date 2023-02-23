@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Container = styled.div`
   background-color: ${({theme}) => theme.COLORS.DARK_900};
   border-radius: 10px;
-  
   display: flex;
   align-items: center;
   justify-items: center;
@@ -28,6 +27,7 @@ export const Container = styled.div`
   }
 
   input:-webkit-autofill {
+    box-shadow: 0 0 0 30px ${({theme}) => theme.COLORS.DARK_700} inset;
     -webkit-box-shadow: 0 0 0 30px ${({theme}) => theme.COLORS.DARK_700} inset;
     -webkit-text-fill-color: ${({theme}) => theme.COLORS.LIGHT_500} !important;
     caret-color: white;

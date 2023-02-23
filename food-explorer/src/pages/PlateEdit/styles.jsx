@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   display: flex;
@@ -27,13 +28,29 @@ export const Main = styled.div`
     width: 175px;
     margin-bottom: 125px;
   }
+
+  @media(max-width: 600px){
+    display: flex;
+    flex-direction: column;
+    padding: 10px 32px;
+    >h1{
+      font-weight: 500;
+    }
+    .modificationButtons {
+      width: 100%;
+      justify-content: space-between;
+      margin-bottom: 44px;
+    }
+    .updateOrderButton, .deleteOrderButton{
+      width: 100%;
+      margin-bottom: 0;
+    }
+  }
 `
 
 export const Form = styled.div`
   display: flex;
   flex-direction: column;
-
-
 
   .inputLine{
     display: flex;
@@ -132,5 +149,33 @@ export const Form = styled.div`
     > input{
       display: none;
     }
+  }
+  @media(max-width: 600px){
+    display: flex;
+    flex-direction: column;
+    .inputLine{
+      flex-direction: column;
+    }
+    .input-wrapper-minor{
+      >input{
+        width: 100%;
+      }
+  }
+  }
+`
+export const LinkPage = styled(Link)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 15px 32px;
+
+  color: ${({theme}) => theme.COLORS.LIGHT_100};
+  font-family: 'Poppins';
+  font-weight: 500;
+  font-size: 18px;
+
+  >svg{
+    width: 22px;
+    height: 22px;
   }
 `

@@ -2,66 +2,99 @@ import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
 export const Container = styled.div`
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+  > a{
+    color: ${({theme}) => theme.COLORS.LIGHT_100};
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;      
+    justify-content: flex-start;
+    margin-top: 32px;
+    margin-left: 122px;
+  }    
+  > button{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;        
+    justify-content: flex-start;
+    margin-left: 122px;
+    margin-top: 24px;
+  }
+  @media(max-width: 600px){
     
-    a{
-      color: ${({theme}) => theme.COLORS.LIGHT_100};
-      font-family: 'Poppins';
-      font-style: normal;
-      font-weight: 700;
-      font-size: 24px;
-      line-height: 140%;
-
-      justify-content: flex-start;
-      margin-top: 32px;
-      margin-left: 122px;
+    >a{
+      margin-left: 56px;
+      font-weight: 500;
     }
-
-    > button{
-        font-family: 'Poppins';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 24px;
-
-        justify-content: flex-start;
-        margin-left: 122px;
-        margin-top: 24px;
-    }
+  }
 `
 
 export const Main = styled.div`
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    gap: 41px;
-    justify-content: center;
-    margin-top: 41px;
-    margin-bottom: 156px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 41px;
+  justify-content: center;
+  margin-top: 41px;
+  margin-bottom: 156px;
+  >img{
+    width: 390px;
+    height: 390px;
+  }
+
+  @media(max-width: 600px){
+    flex-direction: column;
+    margin: 50px 56px;
+    margin-top: 16px;
 
     >img{
-        width: 390px;
-        height: 390px;
+      width: 263px;
+      height: 263px;
     }
+  }
 `
 
 export const Description = styled.div`
+  >h1{
+      font-family: 'Poppins';
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 140%;
+      margin-bottom: 8px;
+  }
+  >p{
+      font-family: 'Poppins';
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 140%;
+      width: 600px;
+  }
+  @media(max-width: 600px){
+    max-width: 316px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     >h1{
-        font-family: 'Poppins';
-        font-weight: 500;
-        font-size: 40px;
-        line-height: 140%;
-        margin-bottom: 8px;
+      font-size: 26px;
+      margin-bottom: 24px;
     }
     >p{
-        font-family: 'Poppins';
-        font-weight: 400;
-        font-size: 24px;
-        line-height: 140%;
-        width: 600px;
+      font-size: 16px;
+      word-wrap: break-word;
+      max-width: 316px;
+      text-align: center;
     }
+    .admButton{
+      width: 100%;
+    }
+  }
 
 `
 
@@ -106,6 +139,7 @@ export const LinkPage = styled(Link)`
   flex-direction: row;
   align-items: center;
 `
+
 export const Quantity = styled.div`
   align-items: center;
   display: flex;

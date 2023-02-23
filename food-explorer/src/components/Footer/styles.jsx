@@ -9,6 +9,15 @@ export const Container = styled.div`
   justify-content: space-between;
   padding: 24px 123px;
   width: 100%;
+  @media(max-width: 600px){
+    font-size: 12px;
+    line-height: 16px;
+    padding: 30px 28px;
+    justify-content: center;
+    >span{
+      margin-left: 32px;
+    }
+  }
 `
 
 export const Logo = styled.div`
@@ -19,6 +28,15 @@ export const Logo = styled.div`
   font-weight: 700;
   gap: 12px;
 
+  @media(max-width: 600px){
+    font-size: 16px;
+    line-height: 18px;
+    gap: 6px;
 
+    >img{ 
+      width: 22px;
+      height: 18px;}
+  }
 `
+
 

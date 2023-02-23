@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { createContext, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { api } from "../services/api";
 
 export const AuthContext = createContext({});
@@ -8,6 +9,7 @@ export const AuthContext = createContext({});
 function AuthProvider({children}) {
   const [ data, setData ] = useState({});
   const [ mealsData, setMealsData ] = useState({});
+  
 
   async function signIn({ email, password }) {
       try { 
@@ -135,3 +137,32 @@ function useAuth(){
 }
 
 export { AuthProvider, useAuth } ;
+
+// async function searchMeal({search}){
+    
+//   const [ searchedIngredientInMeals, setSearchedIngredientInMeals ] = useState([]);
+//     // verrify if ingredients are included on the search and save the meals with those ingredients in searchedIngredientInMeals
+//     ingredients.map( ingredient => {
+//       const ingredientNameIsOnSearch = ingredient.name.toLowerCase().includes(search);
+//       if (ingredientNameIsOnSearch){
+//         const ingredientReferredMeal = meals.filter( meal => meal.id === ingredient.mealId)
+//         setSearchedIngredientInMeals( prevState => [ ...prevState, ingredientReferredMeal[0] ])
+//       }
+//     })
+//     // verify if meal is included in the search
+//     meals.map( meal => {
+//       const mealNameIsOnSearch = meal.name.toLowerCase().includes(search);  
+//       if (mealNameIsOnSearch){
+//         setSearchedMeals( prevState => [ ...prevState, meal ])
+//       }
+//     })
+//     // verify if any meal that has an ingredient included in the search is not in the searchMeal state
+//     searchedIngredientInMeals.map( searchedIngredient => {
+//       const idsOfMealsNamedAfterSearch = []
+//       searchedMeals.map( meal => idsOfMealsNamedAfterSearch.push(meal.id))
+//       const mealIdOfIngredientPlate = idsOfMealsNamedAfterSearch.includes(searchedIngredient.id)
+//       if (mealIdOfIngredientPlate){
+//         setSearchedMeals( prevState => [ ...prevState, searchedIngredient ])
+//       }
+//     })
+//   }

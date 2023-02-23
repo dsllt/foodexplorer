@@ -55,13 +55,19 @@ export function Card({ plateLink, plate, imgSrc, platePrice, plateDescription, f
         </button>
       </div>
       <Main>
-        <img src={imgSrc}/>
+        
+        {user.isAdmin ? (
+          <img className='imgAdm' src={imgSrc}/>
+        ):(
+          <img className='imgUser' src={imgSrc}/>
+        )}
+        
         <div className="title">
           <Link to={`/plateReview/${plateLink}`} state={{plateId}}>{plate}</Link >
           <FiChevronRight size={16} strokeWidth= {5}/>
         </div>
         <p>{plateDescription}</p>
-        <h2>{platePrice}</h2>
+        <h2> R$ {platePrice}</h2>
 
         {user.isAdmin ? (
           <></>
@@ -72,7 +78,7 @@ export function Card({ plateLink, plate, imgSrc, platePrice, plateDescription, f
               <span>{numOfSamePlates}</span>
               <button type="button" onClick={increaseNumOfSamePlates}><FiPlus size={20}/></button>
             </Quantity>
-            <Button text='incluir' onClick={()=>setNumOfPlates(handlenumOfTotalPlates)}/>
+            <Button className="includePlateButton" text='incluir' onClick={()=>setNumOfPlates(handlenumOfTotalPlates)}/>
           </div>
         )}
 
