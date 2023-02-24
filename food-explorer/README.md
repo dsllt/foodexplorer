@@ -7,6 +7,8 @@ The application deals with two personas: the administrator and the user.
     * Each dish has an image, a name, a category, a short description, a lsit of ingredients and a price.
 * The user is able to visualise registered dishes and, when clicking on the it, is directed to a screen with detailled information.
 <br>
+Access the website at: foodexplorer-dsllt.netlify.app
+<br>
 
 ## Project's Architecture
 /src/ <br>
