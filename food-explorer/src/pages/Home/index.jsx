@@ -106,6 +106,7 @@ export function Home(){
             numberOfMealCardsToRender != 0 ? (
               <Hover slides={
                 searchedMeals
+                .filter(meal => meal.category === 'refeicao')
                 .map((meal, index) => {
                   const mealImage = `${api.defaults.baseURL}/files/${meal.image}`
                   const mealLink = meal.name
