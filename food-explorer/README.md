@@ -1,4 +1,4 @@
-![Capa](https://www.figma.com/file/a1Ya336q2WW8rc3nmVTCEG/food-explorer-v2-(Community)?node-id=201%3A1534&t=LNaZ7V88meN9Rcwp-4)
+![Capa](https://user-images.githubusercontent.com/62303172/221061091-01f0f6c5-e590-4a6b-a416-ba261bf104ad.png)
 
 # foodExplorer
 This application is an interactive menu for a fictional restaurant. <br>
