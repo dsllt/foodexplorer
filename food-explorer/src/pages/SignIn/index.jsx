@@ -11,10 +11,11 @@ export function SignIn(){
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ] = useState("");
 
-  const { signIn } = useAuth();
+  const { signIn, loadMeals } = useAuth();
 
   function handleSignIn(){
     signIn({ email, password });
+    loadMeals();
   }
 
   return(

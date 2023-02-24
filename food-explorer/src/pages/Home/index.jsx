@@ -13,7 +13,9 @@ import { NavigationMenu } from "../../components/NavigationMenu"
 
 
 export function Home(){
-  const { loadMeals, meals, ingredients } = useAuth();
+  const { loadMeals } = useAuth();
+  const meals = JSON.parse(localStorage.getItem("@foodexplorer:meals"))
+  const ingredients = JSON.parse(localStorage.getItem("@foodexplorer:ingredients"))
   
   const [ search, setSearch ] = useState('');
   const [ numOfPlates, setNumOfPlates ] = useState(0);
@@ -24,7 +26,6 @@ export function Home(){
   const [ numberOfDesertCardsToRender , setNumberOfDesertCardsToRender] = useState(1);
   const [ numberOfDrinkCardsToRender, setNumberOfDrinkCardsToRender] = useState(1);
   const [ openMenuMobile, setOpenMenuMobile ] = useState(false);
- 
 
   function handleIncludeItem(){
     setNumTotalOfPlates(numTotalOfPlates + numTotalOfPlates)
@@ -67,11 +68,6 @@ export function Home(){
     searchMeals()
   },[search])
 
-  useEffect(() => {
-    loadMeals()
-    
-  }, []);
-
   useEffect(()=>{
     setNumTotalOfPlates(numOfPlates)
   },[numOfPlates]);
@@ -110,7 +106,6 @@ export function Home(){
             numberOfMealCardsToRender != 0 ? (
               <Hover slides={
                 searchedMeals
-                .filter(meal => meal.category === 'refeicao')
                 .map((meal, index) => {
                   const mealImage = `${api.defaults.baseURL}/files/${meal.image}`
                   const mealLink = meal.name

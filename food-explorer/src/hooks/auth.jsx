@@ -13,6 +13,7 @@ function AuthProvider({children}) {
 
   async function signIn({ email, password }) {
       try { 
+        // Get user data
         const response = await api.post("/sessions", { email, password })
         const { user, token } = response.data;
 
@@ -21,6 +22,20 @@ function AuthProvider({children}) {
       
         api.defaults.headers.common['Authorization']  = `Bearer ${token}`
         setData({ user, token });
+
+        // Get dishes data
+        const mealsResponse = await api.get("/meals")
+        const ingredientsResponse = await api.get("/ingredients")
+        localStorage.setItem("@foodexplorer:meals", JSON.stringify(mealsResponse.data));
+        localStorage.setItem("@foodexplorer:ingredients", JSON.stringify(ingredientsResponse.data));
+
+        const meals = localStorage.getItem("@foodexplorer:meals");
+        const ingredients = localStorage.getItem("@foodexplorer:ingredients");
+
+        setMealsData({
+          meals: JSON.parse(meals),
+          ingredients: JSON.parse(ingredients)
+        })
 
       } catch (error) {
         if(error.message){
@@ -73,11 +88,16 @@ function AuthProvider({children}) {
       localStorage.setItem("@foodexplorer:meals", JSON.stringify(mealsResponse.data));
       localStorage.setItem("@foodexplorer:ingredients", JSON.stringify(ingredientsResponse.data));
 
-      const mealsData = localStorage.getItem("@foodexplorer:meals");
+      const token = localStorage.getItem("@foodexplorer:token");
+      const user = localStorage.getItem("@foodexplorer:user");
+      const meals = localStorage.getItem("@foodexplorer:meals");
+      const ingredients = localStorage.getItem("@foodexplorer:ingredients");
 
-      setMealsData({
-        meals: JSON.parse(mealsData),
-        ingredients: JSON.parse(localStorage.getItem("@foodexplorer:ingredients"))
+      setData({ 
+        user: JSON.parse(user),
+        token,
+        meals: JSON.parse(meals),
+        ingredients: JSON.parse(ingredients)
       })
     } catch (error) {
       console.log(error)
@@ -124,7 +144,7 @@ function AuthProvider({children}) {
   }, [])
 
   return(
-    <AuthContext.Provider value={{ signIn, user: data.user, signOut, updateMeal, loadMeals, meals: mealsData.meals ?? data.meals, ingredients: mealsData.ingredients ?? data.ingredients }} >
+    <AuthContext.Provider value={{ signIn, user: data.user, signOut, updateMeal, loadMeals, meals: mealsData.meals , ingredients: mealsData.ingredients }} >
       {children}
     </AuthContext.Provider>
   )
