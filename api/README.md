@@ -41,6 +41,10 @@ This API was developed in order to host user, restaurant and orders data. <br>
 
 # Clone the project 
 
+# Verify environment variables in the .env
+  AUTH_SECRET=
+  SERVER_PORT=
+
 # Download project dependencies
   npm install
 
