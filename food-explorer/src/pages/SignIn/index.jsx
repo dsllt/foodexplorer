@@ -11,11 +11,11 @@ export function SignIn(){
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ] = useState("");
 
-  const { signIn, loadMeals } = useAuth();
+  const { signIn, fetchMeals } = useAuth();
 
-  function handleSignIn(){
-    signIn({ email, password });
-    loadMeals();
+  async function handleSignIn(){
+    await signIn({ email, password });
+    await fetchMeals();
   }
 
   return(

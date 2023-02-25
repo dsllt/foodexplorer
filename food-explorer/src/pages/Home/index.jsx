@@ -13,10 +13,8 @@ import { NavigationMenu } from "../../components/NavigationMenu"
 
 
 export function Home(){
-  const { loadMeals } = useAuth();
-  const meals = JSON.parse(localStorage.getItem("@foodexplorer:meals"))
-  const ingredients = JSON.parse(localStorage.getItem("@foodexplorer:ingredients"))
-  
+  const { user, fetchMeals, meals, ingredients } = useAuth();
+  //console.log(meals)
   const [ search, setSearch ] = useState('');
   const [ numOfPlates, setNumOfPlates ] = useState(0);
   const [ numTotalOfPlates, setNumTotalOfPlates ] = useState(0);
@@ -27,6 +25,7 @@ export function Home(){
   const [ numberOfDrinkCardsToRender, setNumberOfDrinkCardsToRender] = useState(1);
   const [ openMenuMobile, setOpenMenuMobile ] = useState(false);
 
+  
   function handleIncludeItem(){
     setNumTotalOfPlates(numTotalOfPlates + numTotalOfPlates)
     
@@ -84,103 +83,65 @@ export function Home(){
     {openMenuMobile ? (
       <NavigationMenu handleCloseMenuMobile={handleCloseMenuMobile} onChange={e=>setSearch(e.target.value)} />
     ):(
-
       <Container>
-      <Header 
-        numOfPlates={numTotalOfPlates} 
-        onChange={e => {setSearch(e.target.value)}}
-        handleOpenMenuMobile = {handleOpenMenuMobile}
-      />
-      <Main>
-        <Title>
-          <img className='screenPicture' src={TitleImg}/>
-          <img className='mobilePicture' src={TitleImgMobile}/>
-          <div className="titleText">
-            <h1>Sabores inigualáveis</h1>
-            <h2>Sinta o cuidado do preparo com ingredientes selecionados</h2>
-          </div>
-        </Title>
-
-        <Section className="mainPlates" title='Pratos principais'>
-          {
-            numberOfMealCardsToRender != 0 ? (
-              <Hover slides={
-                searchedMeals
-                .filter(meal => meal.category === 'refeicao')
-                .map((meal, index) => {
-                  const mealImage = `${api.defaults.baseURL}/files/${meal.image}`
-                  const mealLink = meal.name
-                    .replace(/\w+/g, function(txt) {
-                      return txt.charAt(0).toUpperCase() + txt.substr(1);
-                    })
-                    .replace(/ /g, '')
-                    .replace(/^./, function(str){ return str.toLowerCase(); })
-                  return (<Card 
-                      key={index}
-                      plateLink={mealLink} 
-                      plate={meal.name} 
-                      imgSrc={mealImage} 
-                      plateDescription={meal.description}
-                      platePrice={meal.price}  
-                      plateCategory={ meal.category}
-                      plateId={meal.id}
-                      setNumOfPlates={setNumOfPlates}
-                      />
-                  )
-                })
-              }/>
-            ) : (
-              <div className="zeroRenderingCards">
-                Nenhum resultado encontrado.
-              </div>
-            )
-          }
-        </Section>
-
-        <Section title='Sobremesas'>
-        {
-          numberOfDesertCardsToRender != 0 ? (
-            <Hover slides={
-            searchedMeals
-            .filter(meal => meal.category === 'sobremesa')
-            .map((meal, index) => {
-              const mealImage = `${api.defaults.baseURL}/files/${meal.image}`
-              const mealLink = meal.name
-                .replace(/\w+/g, function(txt) {
-                  return txt.charAt(0).toUpperCase() + txt.substr(1);
-                })
-                .replace(/ /g, '')
-                .replace(/^./, function(str){ return str.toLowerCase(); })
-              return (
-                <Card 
-                    key={index}
-                    plateLink={mealLink} 
-                    plate={meal.name} 
-                    imgSrc={mealImage} 
-                    plateDescription={meal.description}
-                    platePrice={meal.price}  
-                    plateCategory={meal.category}
-                    plateId={meal.id}
-                    plateIngredients={meal.ingredients}
-                    setNumOfPlates={setNumOfPlates}
-                  />
-              )
-            })
-          }/>
-          ) : (
-            <div className="zeroRenderingCards">
-              Nenhum resultado encontrado.
+        <Header 
+          numOfPlates={numTotalOfPlates} 
+          onChange={e => {setSearch(e.target.value)}}
+          handleOpenMenuMobile = {handleOpenMenuMobile}
+        />
+        <Main>
+          <Title>
+            <img className='screenPicture' src={TitleImg}/>
+            <img className='mobilePicture' src={TitleImgMobile}/>
+            <div className="titleText">
+              <h1>Sabores inigualáveis</h1>
+              <h2>Sinta o cuidado do preparo com ingredientes selecionados</h2>
             </div>
-          )
-        }
-        </Section>
+          </Title>
 
-        <Section title='Bebidas'>
+          <Section className="mainPlates" title='Pratos principais'>
+            {
+              numberOfMealCardsToRender != 0 ? (
+                <Hover slides={
+                  searchedMeals
+                  .filter(meal => meal.category === 'refeicao')
+                  .map((meal, index) => {
+                    const mealImage = `${api.defaults.baseURL}/files/${meal.image}`
+                    const mealLink = meal.name
+                      .replace(/\w+/g, function(txt) {
+                        return txt.charAt(0).toUpperCase() + txt.substr(1);
+                      })
+                      .replace(/ /g, '')
+                      .replace(/^./, function(str){ return str.toLowerCase(); })
+                    return (
+                      <Card 
+                        key={index}
+                        plateLink={mealLink} 
+                        plate={meal.name} 
+                        imgSrc={mealImage} 
+                        plateDescription={meal.description}
+                        platePrice={meal.price}  
+                        plateCategory={ meal.category}
+                        plateId={meal.id}
+                        setNumOfPlates={setNumOfPlates}
+                      />
+                    )
+                  })
+                }/>
+              ) : (
+                <div className="zeroRenderingCards">
+                  Nenhum resultado encontrado.
+                </div>
+              )
+            }
+          </Section>
+
+          <Section title='Sobremesas'>
           {
-          numberOfDrinkCardsToRender != 0 ? (
-            <Hover slides={
+            numberOfDesertCardsToRender != 0 ? (
+              <Hover slides={
               searchedMeals
-              .filter(meal => meal.category === 'bebida')
+              .filter(meal => meal.category === 'sobremesa')
               .map((meal, index) => {
                 const mealImage = `${api.defaults.baseURL}/files/${meal.image}`
                 const mealLink = meal.name
@@ -197,7 +158,9 @@ export function Home(){
                       imgSrc={mealImage} 
                       plateDescription={meal.description}
                       platePrice={meal.price}  
+                      plateCategory={meal.category}
                       plateId={meal.id}
+                      plateIngredients={meal.ingredients}
                       setNumOfPlates={setNumOfPlates}
                     />
                 )
@@ -209,8 +172,44 @@ export function Home(){
               </div>
             )
           }
-        </Section>
-      </Main>
+          </Section>
+
+          <Section title='Bebidas'>
+            {
+            numberOfDrinkCardsToRender != 0 ? (
+              <Hover slides={
+                searchedMeals
+                .filter(meal => meal.category === 'bebida')
+                .map((meal, index) => {
+                  const mealImage = `${api.defaults.baseURL}/files/${meal.image}`
+                  const mealLink = meal.name
+                    .replace(/\w+/g, function(txt) {
+                      return txt.charAt(0).toUpperCase() + txt.substr(1);
+                    })
+                    .replace(/ /g, '')
+                    .replace(/^./, function(str){ return str.toLowerCase(); })
+                  return (
+                    <Card 
+                        key={index}
+                        plateLink={mealLink} 
+                        plate={meal.name} 
+                        imgSrc={mealImage} 
+                        plateDescription={meal.description}
+                        platePrice={meal.price}  
+                        plateId={meal.id}
+                        setNumOfPlates={setNumOfPlates}
+                      />
+                  )
+                })
+              }/>
+              ) : (
+                <div className="zeroRenderingCards">
+                  Nenhum resultado encontrado.
+                </div>
+              )
+            }
+          </Section>
+        </Main>
       <Footer />
     </Container>
     )}

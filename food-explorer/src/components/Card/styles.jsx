@@ -35,7 +35,7 @@ export const Main = styled.div`
   gap: 16px;
   justify-content: center; 
   text-align: center;
-  padding-top: 24px;
+  padding: 24px;
 
   font-family: 'Roboto';
   font-style: normal;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   max-width: 100vw;
@@ -27,4 +28,10 @@ export const Main = styled.div`
   > path{
     fill: white;
   }
+`
+
+export const LinkPage = styled(Link)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `

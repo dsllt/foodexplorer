@@ -8,6 +8,8 @@ export const Container = styled.div`
   grid-template-rows: 105px auto 105px;
   grid-template-areas: "header" "content" "footer";
 
+
+
   @media(max-width: 600px){
     max-width: 600px;
     display: flex;
@@ -16,6 +18,7 @@ export const Container = styled.div`
 `
 
 export const Main = styled.div`
+  display: grid;
   grid-area: content;
   padding: 100px 123px;
   max-width: 100vw;
@@ -50,6 +53,7 @@ export const Title = styled.div`
   margin-top: 64px;
   height: 260px;
   max-width: 1120px;
+  justify-self: center;
 
    .titleText{
       display: flex;

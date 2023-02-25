@@ -5,6 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   overflow: hidden;
   margin-top: 62px;
+  height: 530px;
 
   >h1{
     font-size: 32px;

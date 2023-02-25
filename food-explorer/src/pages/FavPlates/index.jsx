@@ -1,8 +1,8 @@
-import { Container, Main } from "./styles";
+import { Container, Main, LinkPage } from "./styles";
 import { Header } from "../../components/Header"
 import { Footer } from "../../components/Footer";
 import { Section } from "../../components/Section";
-import { Card } from "../../components/Card"
+import { Card } from "../../components/Card";
 
 
 import SaladaRavanello from '../../assets/SaladaRavanello.png'
@@ -13,6 +13,9 @@ export function FavPlates(){
   return(
     <Container>
       <Header isAdm={false}/>
+      <LinkPage to={'/'} >
+        <FiChevronLeft /> voltar
+      </LinkPage>
         <Main>
           <Section title='Pratos favoritos'>
             <Card 

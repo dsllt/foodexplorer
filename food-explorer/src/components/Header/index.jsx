@@ -1,12 +1,12 @@
+import { Link, useNavigate } from "react-router-dom"
+import { FiSearch, FiLogOut, FiMenu } from 'react-icons/fi'
 import { Container, ContainerUser, ContainerAdm, Logout, LogoText, LeftLinks } from "./styles"
 import LogoIcon from '../../assets/logo.svg'
 import ReceiptIcon from '../../assets/receipt-icon.svg'
 import { Input } from "../Input"
 import { Button } from "../Button"
-import { FiSearch, FiLogOut, FiMenu } from 'react-icons/fi'
 import { useAuth } from "../../hooks/auth"
-import { Link, useNavigate } from "react-router-dom"
-import { useState } from "react"
+
 
 
 export function Header({isAdm, numOfPlates, handleOpenMenuMobile,  ...rest }){

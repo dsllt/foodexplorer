@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
-import { Container, Main, Header, Buttons, LinkButton} from "./styles";
+import { Link } from "react-router-dom";
 import { FiSearch, FiX } from "react-icons/fi"
+import { Container, Main, Header, Buttons, LinkButton} from "./styles";
 import { Footer } from "../Footer";
 import { Input } from "../Input";
-import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/auth"
 
 export function NavigationMenu({handleCloseMenuMobile, ...rest}){

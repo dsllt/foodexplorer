@@ -1,13 +1,10 @@
-import { Button } from "../Button";
-import { Container, Main, Quantity } from "./styles";
-
-import { FiPlus, FiMinus, FiHeart, FiChevronRight } from 'react-icons/fi'
-import { Link } from "react-router-dom";
 import { useState } from "react";
-import EditIcon from '../../assets/edit-icon.svg'
-
-import { useAuth } from "../../hooks/auth"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
+import { FiPlus, FiMinus, FiHeart, FiChevronRight } from 'react-icons/fi'
+import { Container, Main, Quantity } from "./styles";
+import { Button } from "../Button";
+import EditIcon from '../../assets/edit-icon.svg';
+import { useAuth } from "../../hooks/auth";
 
 export function Card({ plateLink, plate, imgSrc, platePrice, plateDescription, favPlate, setNumOfPlates, plateCategory, plateId, plateIngredients }){
   const { user } = useAuth();

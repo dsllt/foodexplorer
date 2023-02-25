@@ -16,8 +16,7 @@ export function Hover({slides}){
     if (event.type === "NEXT") {
       return {
         ...state,
-        slideIndex:
-          state.slideIndex === 0 ? slides.length - 1 : state.slideIndex - 1
+        slideIndex: (state.slideIndex - 1) % slides.length
       };
     }
   };
@@ -30,12 +29,13 @@ export function Hover({slides}){
       <Carrousel>
         <Slides>
           {[...slides, ...slides, ...slides].map((slide, i) => {
-            let offset = slides.length + (state.slideIndex - i);
+            let offset = slides.length + (state.slideIndex -  i);
             const active = offset === 0 ? true : null;
             return (
               <Slide 
               style={{'--offset': offset,'--dir': offset === 0 ? 0 : (offset > 0 ? 1 : -1)}} 
-              data-active={active} key={i}
+              data-active={active} 
+              key={i}
             > 
               {slide}
             </Slide>

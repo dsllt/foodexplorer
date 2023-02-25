@@ -7,19 +7,19 @@ import { IngredientsInput } from "../../components/IngredientsInput";
 import { useState } from "react";
 import { api } from "../../services/api";
 import { useNavigate } from "react-router-dom";
-
 import { useAuth } from "../../hooks/auth";
+
 export function PlateAdd(){
-  const [ ingredients, setIngredients ] = useState([])
-  const [ newIngredient, setNewIngredient ] = useState("")
-  const [ image, setImage ] = useState(null)
-  const [ imageFile, setImageFile ] = useState(null)
-  const [ name, setName ] = useState("")
-  const [ price, setPrice ] = useState("")
-  const [ description, setDescription ] = useState("")
-  const [ category, setCategory ] = useState("")
+  const { fetchMeals, meals } = useAuth();
+  const [ ingredients, setIngredients ] = useState([]);
+  const [ newIngredient, setNewIngredient ] = useState("");
+  const [ image, setImage ] = useState(null);
+  const [ name, setName ] = useState("");
+  const [ price, setPrice ] = useState("");
+  const [ description, setDescription ] = useState("");
+  const [ category, setCategory ] = useState("");
   const navigate = useNavigate();
-  const { updateMealsOnLocalStorage } = useAuth();
+  
   async function handleAddPlate(){
       if (!name || !image || !ingredients || !price || !description || !category){
           return alert("Preencha todos os campos");
@@ -28,6 +28,7 @@ export function PlateAdd(){
       api.post('/meals', { name, image, ingredients, price, description, category })
       .then(async () => {
           alert("Prato cadastrado com sucesso!");
+          await fetchMeals();
           
           navigate("/");
           setIngredients([]);

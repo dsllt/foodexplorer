@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { FiPlus, FiMinus, FiChevronLeft } from 'react-icons/fi'
 import { api } from '../../services/api'
 import { useAuth } from "../../hooks/auth"
 import { Container, Description, Ingredients, Main, Sale, LinkPage, Quantity } from "./styles";
@@ -7,26 +8,26 @@ import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { Ingredient } from '../../components/Ingredient'
 import { Button } from '../../components/Button';
-import { FiPlus, FiMinus, FiChevronLeft } from 'react-icons/fi'
-import { useNavigate } from "react-router-dom"
 
 export function PlateReview(){
-  const { user, meals, ingredients } = useAuth();
-  const location = useLocation()
+  const { user } = useAuth();
+  const meals = JSON.parse(localStorage.getItem("@foodexplorer:meals"));
+  const ingredients = JSON.parse(localStorage.getItem("@foodexplorer:ingredients"));
+  const location = useLocation();
   const navigate = useNavigate();
-  const { plateId } = location.state
+  const { plateId } = location.state;
 
   const [ numOfSamePlates, setNumOfSamePlates ] = useState(1);
   const [ numTotalOfPlates, setNumTotalOfPlates ] = useState(0);
   const [ numOfPlates, setNumOfPlates ] = useState(0);
 
   const currentMeal = meals.find( meal => meal.id === plateId )
-
   const plate = currentMeal.name;
   const platePrice = currentMeal.price
   const plateDescription = currentMeal.description
   const plateCategory = currentMeal.category
   const currentIngredients = []
+
   ingredients.map(ingredient => {
     if(ingredient.mealId === plateId){
       currentIngredients.push(ingredient.name)
@@ -34,11 +35,11 @@ export function PlateReview(){
   })
   const imgSrc = `${api.defaults.baseURL}/files/${currentMeal.image}`
 
-  const increaseNumOfSamePlates = () => {
+  function increaseNumOfSamePlates(){
     setNumOfSamePlates(numOfSamePlates + 1);
   }
 
-  const decreaseNumOfSamePlates = () => {
+  function decreaseNumOfSamePlates(){
     if (numOfSamePlates >= 2){
       setNumOfSamePlates(numOfSamePlates - 1);
     } else {
@@ -46,7 +47,7 @@ export function PlateReview(){
     }
   }
 
-  const handlenumOfTotalPlates = () => {
+  function handlenumOfTotalPlates(){
     return numOfSamePlates
   }
 

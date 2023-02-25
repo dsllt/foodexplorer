@@ -11,16 +11,16 @@ import { useAuth } from "../../hooks/auth";
 
 export function PlateEdit(){
   const { state } = useLocation();
-  const { loadMeals, meals } = useAuth();
+  const { fetchMeals, meals } = useAuth();
 
-  const [ mealId, setMealId ] = useState(state.plateId)
-  const [ ingredients, setIngredients ] = useState([])
-  const [ newIngredient, setNewIngredient ] = useState("")
-  const [ name, setName ] = useState(state.plate)
-  const [ image, setImage ] = useState(state.imgSrc.split("/").pop())
-  const [ description, setDescription ] = useState(state.plateDescription)
-  const [ price, setPrice ] = useState(state.platePrice)
-  const [ category, setCategory ] = useState(state.category)
+  const [ mealId, setMealId ] = useState(state.plateId);
+  const [ ingredients, setIngredients ] = useState([]);
+  const [ newIngredient, setNewIngredient ] = useState("");
+  const [ name, setName ] = useState(state.plate);
+  const [ image, setImage ] = useState(state.imgSrc.split("/").pop());
+  const [ description, setDescription ] = useState(state.plateDescription);
+  const [ price, setPrice ] = useState(state.platePrice);
+  const [ category, setCategory ] = useState(state.category);
 
   const navigate = useNavigate();
 
@@ -59,8 +59,9 @@ export function PlateEdit(){
     }
   
     await api.put('/meals', { id: mealId, name, description, category, price, image, ingredients })
-    .then(() => {
+    .then(async() => {
         alert("Prato atualizado com sucesso!");
+        await fetchMeals();
         navigate("/");
       } 
     )
@@ -86,8 +87,8 @@ export function PlateEdit(){
 
     if (confirm){
       await api.delete(`/meals/${id}`)
-      .then(() => {
-        loadMeals()
+      .then(async () => {
+        await fetchMeals()
         alert("Prato excluído!");
         navigate("/");
       } 

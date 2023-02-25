@@ -1,11 +1,9 @@
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Container, Form, Logo } from "./styles";
-import LogoIcon from '../../assets/logo.svg'
+import LogoIcon from '../../assets/logo.svg';
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
-import { ButtonText } from "../../components/ButtonText";
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-
 import { api } from '../../services/api';
 
 export function SignUp(){
