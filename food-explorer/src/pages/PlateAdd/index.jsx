@@ -21,8 +21,20 @@ export function PlateAdd(){
   const navigate = useNavigate();
   
   async function handleAddPlate(){
-      if (!name || !image || !ingredients || !price || !description || !category){
-          return alert("Preencha todos os campos");
+        if (!name && !image && !ingredients && !price && !description && !category){
+          return alert("Por favor, preencha os campos.");
+        } else if (!name ){
+          return alert("Por favor, dê um nome ao prato.");
+        } else if (!image) {
+          return alert("Por favor, selecione uma imagem.");
+        }else if (ingredients.length === 0) {
+          return alert("Por favor, indique os ingredientes.");
+        }else if (!price) {
+          return alert("Por favor, determine um preço.");
+        }else if (!description) {
+          return alert("Por favor, forneça uma descrição do prato.");
+        }else if (!category) {
+          return alert("Por favor, selecione uma categoria.");
         }
         
       api.post('/meals', { name, image, ingredients, price, description, category })
