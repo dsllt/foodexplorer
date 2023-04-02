@@ -5,8 +5,8 @@ const createUsers = `
     email VARCHAR,
     password VARCHAR,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    isAdmin BOOLEAN DEFAULT 0
+    isAdmin INTEGER DEFAULT 0
   )
 `;
 
-module.exports = createUsers;
+module.exports = createUsers; 
